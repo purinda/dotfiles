@@ -174,8 +174,8 @@ nnoremap <silent> <leader>l :wincmd l<CR>
 nnoremap <silent> <leader>[ :wincmd h<CR>
 nnoremap <silent> <leader>] :wincmd l<CR>
 nnoremap <silent> <leader>o :only<CR>
-nnoremap <silent> <leader>- :vsplit <cr>:exec("tag ".expand("<cword>"))<cr>
-nnoremap <silent> <leader>m :!mysql -t %:r:r < %<CR>
+" nnoremap <silent> <leader>- :vsplit <cr>:exec("tag ".expand("<cword>"))<cr>
+" nnoremap <silent> <leader>m :!mysql -t %:r:r < %<CR>
 nnoremap <silent> <leader>bl :buffers<CR>
 nnoremap <silent> <leader>ls :!ls -l<CR>
 nnoremap <silent> <leader>tr :!tree<CR>
@@ -185,13 +185,14 @@ nnoremap <silent> <leader>svns :!svn status<CR>
 nnoremap <leader>p :set paste!<CR>
 nnoremap <leader>n :set number!<CR>
 nnoremap <leader>s :set spell!<CR>
-nnoremap <leader>n :NERDTreeToggle<CR>
-nnoremap <leader>nn :TlistToggle<CR>
+nnoremap <leader>nt :NERDTreeToggle<CR>
+nnoremap <leader>ob :TlistToggle<CR>
 inoremap jk <esc>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap ;; :w<cr>
 nnoremap <silent> <leader>; :BufExplorer<cr>
-
+nnoremap <leader>- :tabprevious<cr>
+nnoremap <leader>= :tabnext<cr>
 
 " Toggle between .gpx and there corresponding .tpl files
 function! ToggleGpxTpl ()
@@ -218,17 +219,17 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
 " Set the minimal split width
-set winwidth=24
-set winminwidth=24
-function! SplitToggle()
-  if(&winwidth == &winminwidth)
-    set winwidth=999
-  else
-    set winwidth=24
-    wincmd =
-  endif
-endfunc
-nnoremap <leader>= :call SplitToggle()<cr>
+"set winwidth=24
+"set winminwidth=24
+"function! SplitToggle()
+"  if(&winwidth == &winminwidth)
+"    set winwidth=999
+"  else
+"    set winwidth=24
+"    wincmd =
+"  endif
+"endfunc
+"nnoremap <leader>= :call SplitToggle()<cr>
 
 " templates.
 " autocmd BufEnter $HOME/bin/*.php 0r $HOME/.vim/templates/a.txt
