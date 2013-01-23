@@ -32,6 +32,7 @@ let Tlist_Compact_Format = 1
 let Tlist_Use_Right_Window = 1
 
 set path=.,/www,/home/purinda/
+set mouse=a
 set cindent
 set smartindent
 set autoindent
@@ -66,6 +67,8 @@ set statusline=%F%m%r%h%w\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,
 highlight StatusLine cterm=none ctermfg=6
 set showtabline=2
 "set hidden
+set history=1000         " remember more commands and search history
+set undolevels=1000      " use many muchos levels of undo
 set backspace=indent,eol,start
 set whichwrap+=<,>,[,]
 " No backup files
@@ -216,7 +219,7 @@ match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
+" autocmd BufWinLeave * call clearmatches()
 
 " Set the minimal split width
 "set winwidth=24
