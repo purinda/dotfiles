@@ -33,7 +33,7 @@ let Tlist_Compact_Format = 1
 " Open TList on right
 let Tlist_Use_Right_Window = 1
 
-set path=.,/www,/home/purinda/
+set path=.,/Volumes/www**,/home/purinda/
 set mouse=a
 set cindent
 set smartindent
@@ -336,3 +336,5 @@ function! BufSel(pattern)
 endfunction
 "Bind the BufSel() function to a user-command
 command! -nargs=1 Bs :call BufSel("<args>")
+
+
