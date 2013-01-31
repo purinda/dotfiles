@@ -1,7 +1,12 @@
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
-" Start autotags 
+" Auto change the directory
+autocmd BufEnter * silent! lcd %:p:h
+" Hack to disable auto dir change after loading vim (required when you have autochdir set)
+autocmd VimEnter * "set noautochdir"
+
+" Start autotags
 let g:autotagsdir = $HOME . "/.vim_ctags/byhash"
 " let g:autotags_global = $HOME . "/.vim_ctags/global_tags"
 
@@ -17,7 +22,7 @@ let g:autotags_ctags_languages = "all"
 let g:autotags_no_global = 1 " disable tagging global directories
 " let g:autotags_ctags_global_include = "/usr/include/*" " this can be useful
 " for 3rd party libraries such as Qt, Boost where all includes files are
-" separately located 
+" separately located
 
 " end Autotags
 
@@ -33,7 +38,8 @@ let Tlist_Compact_Format = 1
 " Open TList on right
 let Tlist_Use_Right_Window = 1
 
-set path=.,/Volumes/www**,/home/purinda/
+set autochdir " required if you want NERDTree to switch to the editor buffer path, see above: after entering we disable this feature
+set path=.,/Volumes/www,/home/purinda/
 set mouse=a
 set cindent
 set smartindent
@@ -104,9 +110,6 @@ if has("autocmd")
   filetype plugin indent on
 endif
 
-" Auto change the directory
-autocmd BufEnter * silent! lcd %:p:h
-
 augroup chmodandshebang
     autocmd!
     autocmd BufWritePost *.sh,*.pl,*.rb,*.py :exe "silent !chmod 700 <afile>" | silent :w!
@@ -132,8 +135,9 @@ if has("autocmd")
   autocmd FileType ruby setlocal ts=4 sts=4 sw=4 expandtab
   autocmd FileType bash setlocal ts=4 sts=4 sw=4 expandtab
 
-  " TagList script files
+  " TagList and NERDTree for script files
   autocmd BufNewFile,BufRead *.php,*.gpx,*.c,*.cpp,*.h,*.hpp,*.java,*.js call ToggleTListR()
+  autocmd BufNewFile,BufRead *.php,*.gpx,*.c,*.cpp,*.h,*.hpp,*.java,*.js execute ":NERDTree"
 
 endif
 
