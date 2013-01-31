@@ -7,6 +7,8 @@ autocmd BufEnter * silent! lcd %:p:h
 " Hack to disable auto dir change after loading vim (required when you have autochdir set)
 autocmd VimEnter * "set noautochdir"
 
+" ==== For Autotags Plugin ====
+
 " Start autotags
 let g:autotagsdir = $HOME . "/.vim_ctags/byhash"
 " let g:autotags_global = $HOME . "/.vim_ctags/global_tags"
@@ -25,20 +27,25 @@ let g:autotags_no_global = 1 " disable tagging global directories
 " for 3rd party libraries such as Qt, Boost where all includes files are
 " separately located
 
-" end Autotags
 
+" ==== For Tlist Plugin ====
+
+" let Tlist_WinWidth = 45
+" Tlist
+" let Tlist_File_Fold_Auto_Close = 1
+" let Tlist_Compact_Format = 1
+
+" Open TList on right
+" let Tlist_Use_Right_Window = 1
+
+" ==== For NERDTree Plugin
 " let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let NERDTreeWinSize = 45
+let g:nerdtree_tabs_open_on_console_startup = 1
 
-let Tlist_WinWidth = 45
-" Tlist
-let Tlist_File_Fold_Auto_Close = 1
-let Tlist_Compact_Format = 1
-
-" Open TList on right
-let Tlist_Use_Right_Window = 1
-
+" ==== Global Settings ====
+"
 set autochdir " required if you want NERDTree to switch to the editor buffer path, see above: after entering we disable this feature
 set path=.,/Volumes/www,/home/purinda/
 set mouse=a
@@ -88,9 +95,6 @@ set backupdir=~/.vim/tmp,.
 set directory=~/.vim/tmp,.
 
 
-" ack
-let g:ackprg="ack-grep -H --nocolor --nogroup --column"
-
 " save a hostname variable.
 " let hostname = substitute(system('hostname'), '\n', '', '')
 
@@ -101,9 +105,9 @@ setlocal spelllang=en_au
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-endif
+" if has("autocmd")
+"  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+" endif
 
 " Uncomment the following to have Vim load indentation rules and plugins
 " according to the detected filetype.
@@ -138,14 +142,10 @@ if has("autocmd")
   autocmd FileType cpp setlocal ts=4 sts=4 sw=4 expandtab
 
   " TagList and NERDTree for script files
-  autocmd BufNewFile,BufRead *.php,*.gpx,*.c,*.cpp,*.h,*.hpp,*.java,*.js,*.sh call ToggleTListR()
-  autocmd BufNewFile,BufRead *.php,*.gpx,*.c,*.cpp,*.h,*.hpp,*.java,*.js,*.sh execute ":NERDTree"
+  autocmd BufNewFile,BufRead *.php,*.gpx,*.c,*.cpp,*.h,*.hpp,*.java,*.js,*.sh,*.php,*.inc,*.pl execute ":TagbarOpen"
+  " autocmd BufNewFile,BufRead *.php,*.gpx,*.c,*.cpp,*.h,*.hpp,*.java,*.js,*.sh,*.php,*.inc,*.pl execute ":NERDTreeTabsOpen"
 
 endif
-
-function ToggleTListR()
-    execute ":TlistOpen"
-endfunction
 
 " Conditional based on location.
 "
@@ -173,9 +173,6 @@ if hostname() == 'purinda-pc1' || hostname() == 'purinda-pc1.syd.gptech.local'
     autocmd BufNewFile */inc/*.php 0r $HOME/.gptech-templates/gptech.php
 endif
 
-au BufRead,BufNewFile Phakefile let is_php=1|setfiletype php
-au BufRead,BufNewFile Phakefile setlocal ts=4 sts=4 sw=4 expandtab
-
 " nnoremap <up> <nop>
 " nnoremap <down> <nop>
 " nnoremap <left> <nop>
@@ -199,7 +196,7 @@ nnoremap <leader>p :set paste!<CR>
 nnoremap <leader>n :set number!<CR>
 nnoremap <leader>s :set spell!<CR>
 nnoremap <leader>nt :NERDTreeToggle<CR>
-nnoremap <leader>ob :TlistToggle<CR>
+nnoremap <leader>ob :TagbarToggle<CR>
 inoremap jk <esc>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap ;; :w<cr>
@@ -230,23 +227,6 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 " autocmd BufWinLeave * call clearmatches()
-
-" Set the minimal split width
-"set winwidth=24
-"set winminwidth=24
-"function! SplitToggle()
-"  if(&winwidth == &winminwidth)
-"    set winwidth=999
-"  else
-"    set winwidth=24
-"    wincmd =
-"  endif
-"endfunc
-"nnoremap <leader>= :call SplitToggle()<cr>
-
-" templates.
-" autocmd BufEnter $HOME/bin/*.php 0r $HOME/.vim/templates/a.txt
-" autocmd BufNewFile *.sh 0r $HOME/.vim/templates/b.txt
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PHP Stuff.
