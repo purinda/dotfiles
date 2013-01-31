@@ -23,7 +23,9 @@ let g:autotags_no_global = 1 " disable tagging global directories
 
 " let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
+let NERDTreeWinSize = 45
 
+let Tlist_WinWidth = 45
 " Tlist
 let Tlist_File_Fold_Auto_Close = 1
 let Tlist_Compact_Format = 1
@@ -102,6 +104,9 @@ if has("autocmd")
   filetype plugin indent on
 endif
 
+" Auto change the directory
+autocmd BufEnter * silent! lcd %:p:h
+
 augroup chmodandshebang
     autocmd!
     autocmd BufWritePost *.sh,*.pl,*.rb,*.py :exe "silent !chmod 700 <afile>" | silent :w!
@@ -132,9 +137,8 @@ if has("autocmd")
 
 endif
 
-" Expand this function based on placement of other plugins/buffers
 function ToggleTListR()
-  TlistToggle
+    execute ":Tlist"
 endfunction
 
 " Conditional based on location.

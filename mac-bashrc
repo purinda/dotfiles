@@ -3,7 +3,7 @@ PATH=$PATH:$HOME/bin; export PATH
 
 TERM="xterm-color" ; export TERM
 
-source ~/etc/dotfiles/bash/prompt
+source ~/Projects/dotfiles/bash/prompt
 
 alias v="vim"
 alias vr="vim -R"
@@ -15,7 +15,7 @@ alias s='sudo'
 alias sv='sudo vim'
 alias g='grep -Hin --colour=always'
 
-source ~/etc/dotfiles/bash/aliases
+source ~/Projects/dotfiles/bash/aliases
 
 # Overide these aliases privided by the above
 # aliases file. They don't play well with BSD.
@@ -23,5 +23,5 @@ alias ll="ls -lG"
 alias ls="ls -G"
 alias all="ls -la"
 
-source ~/etc/dotfiles/bash_completion/*.sh
-source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
+#source ~/etc/dotfiles/bash_completion/*.sh
+#source `brew --prefix`/Library/Contributions/brew_bash_completion.sh

@@ -5,7 +5,7 @@ if &background == "dark"
 endif
 
 colorscheme lucius
-LuciusWhite
+LuciusDark
 
 " Set font
 if has("gui_running")
