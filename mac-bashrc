@@ -2,6 +2,8 @@
 PATH=$PATH:$HOME/bin; export PATH
 
 TERM="xterm-color" ; export TERM
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
 
 source ~/Projects/dotfiles/bash/prompt
 
@@ -22,6 +24,9 @@ source ~/Projects/dotfiles/bash/aliases
 alias ll="ls -lG"
 alias ls="ls -G"
 alias all="ls -la"
+
+# Android SDK
+export ANDROID_SDK_ROOT=/usr/local/opt/android-sdk
 
 #source ~/etc/dotfiles/bash_completion/*.sh
 #source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
