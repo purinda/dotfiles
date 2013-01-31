@@ -3,6 +3,7 @@ call pathogen#helptags()
 
 " Auto change the directory
 autocmd BufEnter * silent! lcd %:p:h
+
 " Hack to disable auto dir change after loading vim (required when you have autochdir set)
 autocmd VimEnter * "set noautochdir"
 
@@ -134,15 +135,16 @@ if has("autocmd")
   autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
   autocmd FileType ruby setlocal ts=4 sts=4 sw=4 expandtab
   autocmd FileType bash setlocal ts=4 sts=4 sw=4 expandtab
+  autocmd FileType cpp setlocal ts=4 sts=4 sw=4 expandtab
 
   " TagList and NERDTree for script files
-  autocmd BufNewFile,BufRead *.php,*.gpx,*.c,*.cpp,*.h,*.hpp,*.java,*.js call ToggleTListR()
-  autocmd BufNewFile,BufRead *.php,*.gpx,*.c,*.cpp,*.h,*.hpp,*.java,*.js execute ":NERDTree"
+  autocmd BufNewFile,BufRead *.php,*.gpx,*.c,*.cpp,*.h,*.hpp,*.java,*.js,*.sh call ToggleTListR()
+  autocmd BufNewFile,BufRead *.php,*.gpx,*.c,*.cpp,*.h,*.hpp,*.java,*.js,*.sh execute ":NERDTree"
 
 endif
 
 function ToggleTListR()
-    execute ":Tlist"
+    execute ":TlistOpen"
 endfunction
 
 " Conditional based on location.
