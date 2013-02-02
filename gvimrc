@@ -4,8 +4,11 @@ if &background == "dark"
     hi normal guibg=black
 endif
 
-colorscheme lucius
+"colorscheme lucius
 " LuciusDark
+
+colorscheme wombat
+wombat
 
 " Set font
 if has("gui_running")
