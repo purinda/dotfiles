@@ -17,7 +17,7 @@ alias s='sudo'
 alias sv='sudo vim'
 alias g='grep -Hin --colour=always'
 
-#source ~/Projects/dotfiles/bash/aliases
+source ~/Projects/dotfiles/bash/aliases
 
 # Overide these aliases privided by the above
 # aliases file. They don't play well with BSD.

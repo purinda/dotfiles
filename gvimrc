@@ -4,8 +4,13 @@ if &background == "dark"
     hi normal guibg=black
 endif
 
+<<<<<<< HEAD
 "colorscheme lucius
 " LuciusDark
+=======
+colorscheme lucius
+LuciusDark
+>>>>>>> 5202aa95fa817abf5ead098e8b52dbe37bf47e72
 
 colorscheme wombat
 wombat
