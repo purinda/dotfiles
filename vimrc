@@ -27,17 +27,6 @@ let g:autotags_no_global = 1 " disable tagging global directories
 " for 3rd party libraries such as Qt, Boost where all includes files are
 " separately located
 
-
-" ==== For Tlist Plugin ====
-
-" let Tlist_WinWidth = 45
-" Tlist
-" let Tlist_File_Fold_Auto_Close = 1
-" let Tlist_Compact_Format = 1
-
-" Open TList on right
-" let Tlist_Use_Right_Window = 1
-
 " ==== For NERDTree Plugin
 " let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
@@ -62,7 +51,7 @@ set tabstop=4
 set softtabstop=4
 set smarttab
 set background=dark
-" colorscheme lucius
+colorscheme molokai
 set showmatch
 set nohlsearch
 set nowrap
@@ -80,7 +69,6 @@ set wildmenu
 set formatprg=par-format\ -w80
 " use 'gqip' to format.
 set statusline=%F%m%r%h%w\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
-highlight StatusLine cterm=none ctermfg=6
 set showtabline=2
 "set hidden
 set history=1000         " remember more commands and search history
@@ -88,12 +76,26 @@ set undolevels=1000      " use many muchos levels of undo
 set backspace=indent,eol,start
 set whichwrap+=<,>,[,]
 " No backup files
-" set noswapfile
-" set nobk
+set noswapfile
+set nobk
 " Set a custom backup directory so no annyoing temp files in project directories
 set backupdir=~/.vim/tmp,.
 set directory=~/.vim/tmp,.
 
+highlight ColorColumn ctermbg=darkgrey
+highlight StatusLine cterm=none ctermfg=black
+highlight LineNr ctermfg=darkgrey
+highlight CursorLine ctermbg=darkgrey
+highlight CursorColumn ctermbg=darkgrey ctermfg=darkgrey
+highlight Vertsplit ctermbg=darkgrey ctermfg=darkgrey
+highlight Visual ctermbg=52
+" Highlight whitespace.
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
 
 " save a hostname variable.
 " let hostname = substitute(system('hostname'), '\n', '', '')
@@ -147,17 +149,6 @@ if has("autocmd")
 
 endif
 
-" Conditional based on location.
-"
-" My computers / servers.
-"if hostname() == 'dev'
-"
-"    " proem
-"    autocmd BufEnter $HOME/src/proem/lib/Proem/*.php 0r $HOME/.vim-templates/proem.class.php
-"    autocmd BufEnter $HOME/src/proem/tests/Proem/*.php 0r $HOME/.vim-templates/proem.test.php
-"
-"endif
-
 " Work
 if hostname() == 'purinda-pc1' || hostname() == 'purinda-pc1.syd.gptech.local'
     " handle gpx files as php.
@@ -185,12 +176,9 @@ nnoremap <silent> <leader>[ :wincmd h<CR>
 nnoremap <silent> <leader>] :wincmd l<CR>
 nnoremap <silent> <leader>o :only<CR>
 " nnoremap <silent> <leader>- :vsplit <cr>:exec("tag ".expand("<cword>"))<cr>
-" nnoremap <silent> <leader>m :!mysql -t %:r:r < %<CR>
 nnoremap <silent> <leader>bl :buffers<CR>
 nnoremap <silent> <leader>ls :!ls -l<CR>
 nnoremap <silent> <leader>tr :!tree<CR>
-nnoremap <silent> <leader>sv :source ~/.vimrc<CR>
-nnoremap <silent> <leader>ev :tabe ~/.vimrc<CR>
 nnoremap <silent> <leader>svns :!svn status<CR>
 nnoremap <leader>p :set paste!<CR>
 nnoremap <leader>n :set number!<CR>
@@ -203,6 +191,12 @@ nnoremap ;; :w<cr>
 nnoremap <silent> <leader>; :BufExplorer<cr>
 nnoremap <leader>- :tabprevious<cr>
 nnoremap <leader>= :tabnext<cr>
+
+" Useful mappings for managing tabs
+map <leader>tn :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove
 
 " Toggle between .gpx and there corresponding .tpl files
 function! ToggleGpxTpl ()
@@ -220,12 +214,6 @@ function! ToggleGpxTpl ()
 endfunction
 nnoremap <silent> <leader>' :call ToggleGpxTpl()<CR>
 
-" Highlight whitespace.
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 " autocmd BufWinLeave * call clearmatches()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

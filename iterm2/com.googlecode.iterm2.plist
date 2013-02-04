@@ -3432,9 +3432,9 @@
 	<key>NSWindow Frame NSColorPanel</key>
 	<string>1130 250 201 309 0 0 1920 1058 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>942 331 924 485 0 0 1920 1058 </string>
+	<string>712 169 924 485 0 0 1920 1058 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 9 1914 1049 0 0 1920 1058 </string>
+	<string>0 0 1920 1080 0 0 1920 1058 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>397 215 710 568 0 0 1920 1058 </string>
 	<key>New Bookmarks</key>
@@ -4209,7 +4209,7 @@
 	<key>PromptOnQuit</key>
 	<true/>
 	<key>QuitWhenAllWindowsClosed</key>
-	<false/>
+	<true/>
 	<key>RightCommand</key>
 	<integer>8</integer>
 	<key>RightOption</key>
@@ -4221,7 +4221,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2013-01-31T09:00:51Z</date>
+	<date>2013-02-03T11:26:51Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
@@ -4253,7 +4253,7 @@
 	<key>UseCompactLabel</key>
 	<false/>
 	<key>UseLionStyleFullscreen</key>
-	<true/>
+	<false/>
 	<key>WindowNumber</key>
 	<true/>
 	<key>WindowStyle</key>

@@ -1,19 +1,11 @@
 set go-=T
-set bg=light
+set bg=dark
 if &background == "dark"
     hi normal guibg=black
 endif
 
-<<<<<<< HEAD
-"colorscheme lucius
-" LuciusDark
-=======
-colorscheme lucius
+colorscheme molokai
 LuciusDark
->>>>>>> 5202aa95fa817abf5ead098e8b52dbe37bf47e72
-
-colorscheme wombat
-wombat
 
 " Set font
 if has("gui_running")

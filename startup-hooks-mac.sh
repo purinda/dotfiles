@@ -5,17 +5,31 @@
 #
 #
 
+DIR=/Volumes/backupdrive
+
 mount_nas() {
-    mount -t smbfs //guest:@router/backupdrive /Volumes/NAS
+    mount -t smbfs //guest:@192.168.1.1/backupdrive $DIR
 }
 
 # Mount NAS
-if [ -d /Volumes/NAS ]
+if [ ! -d $DIR ]
 then
-    mount_nas
-elif [ ! -d /Volumes/NAS ]
+    mkdir $DIR
+fi
+
+# Check if directory is empty ? if so (assuming not mounted already) mount it
+if [ ! "$(ls -A $DIR)" ]
 then
-    mkdir /Volumes/NAS
     mount_nas
 fi
 
+
+echo `date "+[INFO] %d/%m/%Y %H:%M:%S"` NAS mounted >> /var/log/custom.log
+
+
+
+################ Mount secto.me #######################
+
+mount_sectome() {
+
+}
