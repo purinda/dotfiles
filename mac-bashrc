@@ -31,3 +31,6 @@ export ANDROID_SDK_ROOT=/usr/local/opt/android-sdk
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
+
+# For fun
+fortune
