@@ -32,12 +32,12 @@ let g:autotags_no_global = 1 " disable tagging global directories
 let NERDTreeDirArrows = 1
 let NERDTreeWinSize = 45
 let g:nerdtree_tabs_open_on_console_startup = 1
-
+let NERDTreeShowBookmarks=1
 " ==== Global Settings ====
 "
 set autochdir " required if you want NERDTree to switch to the editor buffer path, see above: after entering we disable this feature
 set path=.,/Volumes/www,/home/purinda/
-set mouse=a
+" set mouse=a
 set cindent
 set smartindent
 set autoindent

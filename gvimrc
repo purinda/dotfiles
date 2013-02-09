@@ -5,7 +5,7 @@ if &background == "dark"
 endif
 
 colorscheme molokai
-LuciusDark
+set mouse=a
 
 " Set font
 if has("gui_running")
