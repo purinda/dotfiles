@@ -5,4 +5,4 @@
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
 # custom environment variables
-export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/Cellar/subversion/1.7.8/bin/:/usr/local/bin:$PATH

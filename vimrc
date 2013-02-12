@@ -53,10 +53,10 @@ set smarttab
 set background=dark
 colorscheme molokai
 set showmatch
-set nohlsearch
+" set nohlsearch
 set nowrap
 set whichwrap=b,s,<,>,[,],~
-" set hlsearch
+set hlsearch
 set incsearch
 set shortmess=I
 set laststatus=2
@@ -191,6 +191,8 @@ nnoremap ;; :w<cr>
 nnoremap <silent> <leader>; :BufExplorer<cr>
 nnoremap <leader>- :tabprevious<cr>
 nnoremap <leader>= :tabnext<cr>
+nnoremap <leader>m :set mouse=a<cr>
+nnoremap <leader>mm :set mouse=<cr>
 
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
