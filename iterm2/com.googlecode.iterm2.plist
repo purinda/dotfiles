@@ -3361,7 +3361,7 @@
 	<key>FocusFollowsMouse</key>
 	<false/>
 	<key>FsTabDelay</key>
-	<real>2.0921387672424316</real>
+	<real>0.60470378398895264</real>
 	<key>HiddenAFRStrokeThickness</key>
 	<real>0.0</real>
 	<key>HiddenAdvancedFontRendering</key>
@@ -3432,9 +3432,9 @@
 	<key>NSWindow Frame NSColorPanel</key>
 	<string>1130 250 201 309 0 0 1920 1058 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>712 169 924 485 0 0 1920 1058 </string>
+	<string>409 250 924 485 0 0 1920 1058 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 1920 1080 0 0 1920 1058 </string>
+	<string>730 336 710 546 0 0 1920 1058 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>397 215 710 568 0 0 1920 1058 </string>
 	<key>New Bookmarks</key>
@@ -4221,8 +4221,10 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2013-02-07T11:26:51Z</date>
+	<date>2013-02-14T10:31:35Z</date>
 	<key>SavePasteHistory</key>
+	<false/>
+	<key>Show Toolbelt</key>
 	<false/>
 	<key>ShowBookmarkName</key>
 	<false/>
@@ -4244,6 +4246,10 @@
 	<false/>
 	<key>TmuxDashboardLimit</key>
 	<integer>10</integer>
+	<key>ToolbeltTools</key>
+	<array>
+		<string>Profiles</string>
+	</array>
 	<key>TripleClickSelectsFullWrappedLines</key>
 	<true/>
 	<key>URLHandlersByGuid</key>
