@@ -34,3 +34,6 @@ fi
 
 # For fun
 fortune
+
+# set the terminal label to something undestandable.
+echo -ne "\033]0;`whoami`@`hostname`$@\007"

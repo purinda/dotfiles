@@ -8,7 +8,7 @@
 DIR=/Volumes/backupdrive
 
 mount_nas() {
-    mount -t smbfs //guest:@192.168.1.1/backupdrive $DIR
+    mount -t smbfs //guest:@router/backupdrive $DIR
 }
 
 # Mount NAS
@@ -26,10 +26,3 @@ fi
 
 echo `date "+[INFO] %d/%m/%Y %H:%M:%S"` NAS mounted >> /var/log/custom.log
 
-
-
-################ Mount secto.me #######################
-
-mount_sectome() {
-
-}
