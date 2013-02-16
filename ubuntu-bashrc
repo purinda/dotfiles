@@ -115,6 +115,7 @@ fi
 
 
 source ~/Projects/dotfiles/bash/prompt
+source ~/Projects/dotfiles/bash/alias
 
 # Display something useful in terminal label 
 echo -ne "\033]0;`whoami`@`hostname`$@\007"

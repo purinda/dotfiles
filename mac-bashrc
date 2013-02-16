@@ -5,7 +5,6 @@ PATH=$PATH:$HOME/bin; export PATH
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
-source ~/Projects/dotfiles/bash/prompt
 
 alias v="vim"
 alias vr="vim -R"
@@ -16,8 +15,6 @@ alias tree='tree -C'
 alias s='sudo'
 alias sv='sudo vim'
 alias g='grep -Hin --colour=always'
-
-source ~/Projects/dotfiles/bash/aliases
 
 # Overide these aliases privided by the above
 # aliases file. They don't play well with BSD.
@@ -34,6 +31,9 @@ fi
 
 # For fun
 fortune
+
+source ~/Projects/dotfiles/bash/aliases
+source ~/Projects/dotfiles/bash/prompt
 
 # set the terminal label to something undestandable.
 echo -ne "\033]0;`whoami`@`hostname`$@\007"
