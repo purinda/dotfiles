@@ -37,4 +37,11 @@ alias sectome='ssh `whoami`@secto.me'
 alias dev='ssh root@10.24.7.20'
 alias justin='ssh root@10.24.4.20'
 alias darren='ssh root@10.24.6.20'
+
+# Hosts
 alias ra='ssh ra'
+alias odin='ssh purinda@192.168.3.5'
+alias odinw='ssh purinda@192.168.1.5'
+alias hera='ssh purinda@192.168.3.3'
+alias heraw='ssh purinda@192.168.1.3'
+
