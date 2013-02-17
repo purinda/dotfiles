@@ -3434,9 +3434,11 @@
 	<key>NSWindow Frame Preferences</key>
 	<string>409 250 924 485 0 0 1920 1058 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>485 280 710 546 0 0 1920 1058 </string>
+	<string>0 552 610 506 0 0 1920 1058 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>397 215 710 568 0 0 1920 1058 </string>
+	<key>NeverWarnAboutShortLivedSessions_F832DBA5-EFC5-47B8-BD42-F3C1C8132C94</key>
+	<true/>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -3976,17 +3978,17 @@
 			<key>Log Directory</key>
 			<string></string>
 			<key>Minimum Contrast</key>
-			<real>0.11364583671092987</real>
+			<real>0.036119792610406876</real>
 			<key>Mouse Reporting</key>
 			<true/>
 			<key>Name</key>
 			<string>Default</string>
 			<key>Non Ascii Font</key>
-			<string>Menlo-Regular 11</string>
+			<string>Menlo-Regular 10</string>
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>Menlo-Regular 11</string>
+			<string>Menlo-Regular 10</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -4221,7 +4223,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2013-02-15T10:42:31Z</date>
+	<date>2013-02-16T10:42:31Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
