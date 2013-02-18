@@ -37,7 +37,9 @@ let NERDTreeShowBookmarks=1
 "
 set autochdir " required if you want NERDTree to switch to the editor buffer path, see above: after entering we disable this feature
 set path=.,/Volumes/www,/home/purinda/
-" set mouse=a
+" Highlight current line 
+highlight CursorLine guibg=grey20
+set cursorline
 set cindent
 set smartindent
 set autoindent
