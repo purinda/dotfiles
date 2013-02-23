@@ -30,7 +30,7 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
 fi
 
 # For fun
-fortune
+# fortune
 
 source ~/Projects/dotfiles/bash/aliases
 source ~/Projects/dotfiles/bash/prompt
