@@ -5,7 +5,6 @@ PATH=$PATH:$HOME/bin; export PATH
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
 
-
 alias v="vim"
 alias vr="vim -R"
 alias sv="sudo vim"
@@ -29,11 +28,11 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
 fi
 
-# For fun
-# fortune
+# set the terminal label to something undestandable.
+echo -ne "\033]0;`whoami`@`hostname`$@\007"
+
+# If we are on a dev system, pull in the git bash profile
+. ~/Projects/dotfiles/bash/profile_git
 
 source ~/Projects/dotfiles/bash/aliases
 source ~/Projects/dotfiles/bash/prompt
-
-# set the terminal label to something undestandable.
-echo -ne "\033]0;`whoami`@`hostname`$@\007"
