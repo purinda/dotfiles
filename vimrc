@@ -34,8 +34,10 @@ let NERDTreeDirArrows = 1
 let NERDTreeWinSize = 45
 let g:nerdtree_tabs_open_on_console_startup = 1
 let NERDTreeShowBookmarks=1
-" ==== Global Settings ====
+
 "
+" General vim settings common to both CLI and GUI versions
+" 
 set autochdir " required if you want NERDTree to switch to the editor buffer path, see above: after entering we disable this feature
 set path=.,/Volumes/www,/home/purinda/
 " Highlight current line 
@@ -53,7 +55,15 @@ set shiftwidth=4
 set tabstop=4
 set softtabstop=4
 set smarttab
+
+"
+" Color schemes and theme settings
+"
 set background=dark
+if $COLORTERM == 'gnome-terminal'
+  set t_Co=256
+endif
+
 colorscheme molokai
 set showmatch
 " set nohlsearch
@@ -137,14 +147,14 @@ if has("autocmd")
   " Enable file type detection
   filetype on
 
-  autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-  autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
-  autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
-  autocmd FileType javascript setlocal ts=4 sts=4 sw=4 expandtab
-  autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
-  autocmd FileType ruby setlocal ts=4 sts=4 sw=4 expandtab
-  autocmd FileType bash setlocal ts=4 sts=4 sw=4 expandtab
-  autocmd FileType cpp setlocal ts=4 sts=4 sw=4 expandtab
+  autocmd FileType yaml          setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType html          setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType css           setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType javascript    setlocal ts=4 sts=4 sw=4 expandtab
+  autocmd FileType python        setlocal ts=4 sts=4 sw=4 expandtab
+  autocmd FileType ruby          setlocal ts=4 sts=4 sw=4 expandtab
+  autocmd FileType bash          setlocal ts=4 sts=4 sw=4 expandtab
+  autocmd FileType cpp           setlocal ts=4 sts=4 sw=4 expandtab
 
   " TagList and NERDTree for script files
   autocmd BufNewFile,BufRead *.php,*.gpx,*.c,*.cpp,*.h,*.hpp,*.java,*.js,*.sh,*.php,*.inc,*.pl execute ":TagbarOpen"

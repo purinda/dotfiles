@@ -119,3 +119,6 @@ source ~/Projects/dotfiles/bash/aliases
 
 # Display something useful in terminal label 
 echo -ne "\033]0;`whoami`@`hostname`$@\007"
+
+# Extra colors
+export TERM="xterm-256color"

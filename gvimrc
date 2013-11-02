@@ -10,7 +10,7 @@ set mouse=a
 " Set font
 if has("gui_running")
   if has("gui_gtk2")
-    set guifont=Inconsolata\ 9
+    set guifont=Inconsolata\ 10
   elseif has("gui_win32")
     set guifont=Consolas:h9:cANSI
   endif
