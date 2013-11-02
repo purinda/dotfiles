@@ -8,7 +8,7 @@
         st = status
         lg = log --color --pretty=format:\"%h %s %an %cr\" --graph
 [core]
-        excludesfile = /home/thorpe/.gitignore
+        excludesfile = /home/purinda/.gitignore
 [color]
         branch = auto
         diff = auto
