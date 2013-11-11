@@ -39,6 +39,15 @@ alias devlocal='ssh root@192.168.56.200'
 alias justin='ssh root@10.24.4.20'
 alias darren='ssh root@10.24.6.20'
 
+#
+# Command aliases
+#
+
+# use htop instead of top if htop is installed
+if hash htop 2>/dev/null; then
+    alias top='htop'
+fi
+
 # Hosts
 alias ra='ssh ra'
 alias odin='ssh purinda@192.168.3.5'
