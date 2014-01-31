@@ -9,10 +9,28 @@ autocmd BufEnter * silent! lcd %:p:h
 " Hack to disable auto dir change after loading vim (required when you have autochdir set)
 autocmd VimEnter * "set noautochdir"
 
-" ==== For Autotags Plugin ====
+" C++ Configuration - http://vim.wikia.com/wiki/VimTip1608
+" configure tags - add additional tags here or comment out not-used ones
+set tags+=~/.vim/tags/cpp
+set tags+=~/.vim/tags/gl
+set tags+=~/.vim/tags/linux
+set tags+=~/.vim/tags/qt5.2.0
+" build tags of your own project with Ctrl-F12
+map <C-F12> :!ctags -R --sort=yes --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
-" Start autotags
-let g:autotagsdir = $HOME . "~/.vim/tags"
+" OmniCppComplete
+let OmniCpp_NamespaceSearch = 1
+let OmniCpp_GlobalScopeSearch = 1
+let OmniCpp_ShowAccess = 1
+let OmniCpp_ShowPrototypeInAbbr = 1 " show function parameters
+let OmniCpp_MayCompleteDot = 1 " autocomplete after .
+let OmniCpp_MayCompleteArrow = 1 " autocomplete after ->
+let OmniCpp_MayCompleteScope = 1 " autocomplete after ::
+let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
+" automatically open and close the popup menu / preview window
+au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
+set completeopt=menuone,menu,longest,preview
+
 
 "   Set to 1 to get paths with metachars replaced by . as path hashes
 "   Default is 0, md5sum hash is used
