@@ -39,6 +39,23 @@ alias devlocal='ssh root@192.168.56.200'
 alias justin='ssh root@10.24.4.20'
 alias darren='ssh root@10.24.6.20'
 
+alias v="vim"
+alias vr="vim -R"
+alias sv="sudo vim"
+alias q='exit'
+alias c='clear'
+alias tree='tree -C'
+alias s='sudo'
+alias sv='sudo vim'
+alias g='grep -Hin --colour=always'
+
+# Overide these aliases privided by the above
+# aliases file. They don't play well with BSD.
+alias ll="ls -lG"
+alias ls="ls -G"
+alias all="ls -la"
+
+
 #
 # Command aliases
 #
