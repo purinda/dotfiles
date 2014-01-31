@@ -1,6 +1,7 @@
 filetype off
-call pathogen#runtime_append_all_bundles()
+call pathogen#incubate()
 call pathogen#helptags()
+filetype on
 
 " Auto change the directory
 autocmd BufEnter * silent! lcd %:p:h
@@ -11,8 +12,7 @@ autocmd VimEnter * "set noautochdir"
 " ==== For Autotags Plugin ====
 
 " Start autotags
-let g:autotagsdir = $HOME . "/.vim_ctags/byhash"
-" let g:autotags_global = $HOME . "/.vim_ctags/global_tags"
+let g:autotagsdir = $HOME . "~/.vim/tags"
 
 "   Set to 1 to get paths with metachars replaced by . as path hashes
 "   Default is 0, md5sum hash is used
