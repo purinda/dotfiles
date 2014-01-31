@@ -34,7 +34,7 @@ alias gp='git push'
 alias gd='git diff'
 alias gcv='git commit -v'
 alias sectome='ssh `whoami`@secto.me'
-alias dev='ssh root@10.24.7.20'
+alias dev='ssh root@10.24.4.20'
 alias devlocal='ssh root@192.168.56.200'
 alias justin='ssh root@10.24.4.20'
 alias darren='ssh root@10.24.6.20'
@@ -46,10 +46,12 @@ alias darren='ssh root@10.24.6.20'
 # use htop instead of top if htop is installed
 if hash htop 2>/dev/null; then
     alias top='htop'
+elif hash htop-macosx 2>/dev/null; then
+    alias top='htop-macosx'
 fi
 
 # Hosts
-alias ra='ssh ra'
+alias ra='ssh console@rae.gptech.com.au'
 alias odin='ssh purinda@192.168.3.5'
 alias odinw='ssh purinda@192.168.1.5'
 alias hera='ssh purinda@192.168.3.3'
