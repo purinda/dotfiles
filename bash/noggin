@@ -1,0 +1,8 @@
+export PATH=$PATH:/home/clients/oca/home/work/developerscripts/
+
+SVN_EDITOR=/usr/bin/vim
+
+# Aliases
+alias el5='ssh oca@el5'
+alias core='cd /home/clients/oca/home/code/pgunasekara-current/'
+alias eme='cd /home/clients/oca/home/code/pgunasekara-current_emergency/'

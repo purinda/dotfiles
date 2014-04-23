@@ -2770,5 +2770,3 @@ git_prompt() {
 # use git prompt by default
 git_prompt
 
-# set vim as the default editor so that commit messages will open it.
-export EDITOR=/usr/local/bin/vim
