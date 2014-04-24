@@ -4,5 +4,5 @@ function parse_git_branch() {
 
 
 function svndiff () {
-  svn diff ${1+"$@"} | colordiff
+  svn diff ${1+"$@"} | colordiff | less -R
 }
