@@ -4,9 +4,7 @@ alias s='sudo'
 alias v='vim'
 alias sv='sudo vim'
 alias lsd='ll -d */'
-alias ll='ls -lhF --color'
 #alias lss='ls -lSh'
-alias all='ls -AlhiF --color'
 alias h='history | grep $1'
 alias x='startx'
 alias q='exit'
@@ -44,6 +42,19 @@ alias s='sudo'
 alias sv='sudo vim'
 alias g='grep -HIin --colour=always' 
 alias sg='grep -HIrin --colour=always' 
+
+# OS Agnostic aliases
+if [ "$(uname)" == "Darwin" ]; then
+
+    alias ll='ls -lhFG'
+    alias all='ls -AlhiFG'
+
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+
+    alias ll='ls -lhF --color'
+    alias all='ls -AlhiF --color'
+
+fi
 
 
 # Overide these aliases privided by the above
