@@ -28,9 +28,16 @@ shopt -s checkwinsize
 
 # Android SDK
 export ANDROID_SDK_ROOT=/usr/local/opt/android-sdk
+export ANDROID_HOME=/usr/local/opt/android-sdk
+
+# GoLang requisites
+export GOPATH=$HOME/Go
+export GOROOT=/usr/local/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
+  . /usr/local/etc/bash_completion.d/adb-completion.bash
 fi
 
 # set the terminal label to something undestandable.

@@ -23,6 +23,8 @@ package { "php5-curl"           : ensure => "installed" }
 package { "php5-tidy"           : ensure => "installed" }
 package { "libapache2-mod-php5" : ensure => "installed" }
 package { "php5-mcrypt"         : ensure => "installed" }
+package { "exuberant-ctags"     : ensure => "installed" }
+package { "cscope"              : ensure => "installed" }
 
 class mysql-server {
   $password = "password"
