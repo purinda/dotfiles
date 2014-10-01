@@ -87,7 +87,7 @@ file {
   # Symlinks for bash profile
   '/home/purinda/.bashrc':
     ensure => 'link',
-    target => '/home/purinda/Projects/dotfiles/ubuntu-bashrc',
+    target => '/home/purinda/Projects/dotfiles/bashrc.ubuntu',
     owner  => "purinda",
     group  => "purinda",
     mode   => 750,

@@ -48,18 +48,11 @@ exec {
     require => Vcsrepo["/Users/purinda/Projects/dotfiles"],
 }
 
-exec {
-  "ssh-keygen -t rsa -f /Users/purinda/.ssh/id_rsa -N ''":
-    user   => "purinda",
-    onlyif => "test ! -f /Users/purinda/.ssh/id_rsa",
-    path   => ['/usr/bin','/usr/sbin','/bin','/sbin'],
-}
-
 file {
   # Symlinks for bash profile
   '/Users/purinda/.bashrc':
     ensure => 'link',
-    target => '/Users/purinda/Projects/dotfiles/mac-bashrc',
+    target => '/Users/purinda/Projects/dotfiles/bashrc.osx',
     owner  => "purinda",
     group  => "staff",
     mode   => 750,
