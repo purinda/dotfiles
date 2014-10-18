@@ -44,7 +44,10 @@ fi
 echo -ne "\033]0;`whoami`@`hostname`$@\007"
 
 # If we are on a dev system, pull in the git bash profile
-. ~/Projects/dotfiles/bash/profile_git
+. ~/.dotfiles/bash/profile_git
 
-source ~/Projects/dotfiles/bash/aliases
-source ~/Projects/dotfiles/bash/prompt
+source ~/.dotfiles/bash/aliases
+source ~/.dotfiles/bash/prompt
+
+# Work profile 
+. /Users/purinda/.dotfiles/scripts/work/news.sh
