@@ -4,6 +4,8 @@ PATH=$PATH:$HOME/bin; export PATH
 #TERM="xterm-color" ; export TERM
 export CLICOLOR=1
 export LSCOLORS=GxFxCxDxBxegedabagaced
+export LC_CTYPE=C 
+export LANG=C
 
 # If not running interactively, don't do anything
 case $- in

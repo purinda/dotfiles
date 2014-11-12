@@ -5,8 +5,8 @@ PROFILE="/Users/purinda/profile"
 export_proxy() {
 
     # Enable cntlm for News Ltd proxy
-    export http_proxy=http://localhost:3128
-    export https_proxy=http://localhost:3128
+    export http_proxy=http://127.0.0.1:3128
+    export https_proxy=https://127.0.0.1:3128
     echo "Setting up NewsCorp proxy.."
 
 }
