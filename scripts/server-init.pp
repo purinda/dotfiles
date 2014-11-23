@@ -1,5 +1,6 @@
 #Prerequisites 
 # - vcsrepo (puppet module install puppetlabs-vcsrepo)
+# - apache  (puppet module install puppetlabs-apache)
 
 #user {
 #  "purinda":
@@ -25,6 +26,7 @@ package { "libapache2-mod-php5" : ensure => "installed" }
 package { "php5-mcrypt"         : ensure => "installed" }
 package { "exuberant-ctags"     : ensure => "installed" }
 package { "cscope"              : ensure => "installed" }
+package { "tree"                : ensure => "installed" }
 
 class mysql-server {
   $password = "password"
@@ -110,3 +112,9 @@ file {
     mode   => 750,
     force  => true;
 }
+
+# Apache configuration
+class { 'apache': }
+
+apache::mod { 'rewrite': }
+apache::mod { 'ssl': }
