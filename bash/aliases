@@ -79,11 +79,8 @@ elif hash htop-macosx 2>/dev/null; then
 fi
 
 # Hosts
-alias ra='ssh console@rae.gptech.com.au'
-alias odin='ssh purinda@192.168.3.5'
-alias odinw='ssh purinda@192.168.1.5'
-alias hera='ssh purinda@192.168.3.3'
-alias heraw='ssh purinda@192.168.1.3'
+
 # Hosts - vm
-alias sbs='ssh purinda@192.168.56.2'
+alias ks='ssh purinda@192.168.56.101'
+alias scratch='ssh purinda@192.168.56.100'
 

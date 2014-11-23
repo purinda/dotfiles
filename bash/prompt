@@ -1,3 +1,5 @@
+ENV=${HOME}/env
+
 function __git_dirty {
   git diff --quiet HEAD &>/dev/null 
   [ $? == 1 ] && echo "!" 
@@ -24,8 +26,18 @@ bash_prompt() {
 
   local UC=$C                 # user's color
   [ $UID -eq "0" ] && UC=$R   # root's color
-
-  PS1="$BIBlack[\t] $UC\u$W@$B\h$C[$W\w$C]$G\$(__git_branch)$R\$(__git_dirty)$W+$NONE "
+  
+  if [ -f $ENV ]; 
+  then
+    if grep dev $ENV > /dev/null 
+    then
+      PS1="$BIBlack[\t] $UC\u$W@$Y\h$C[$W\w$C]$G\$(__git_branch)$R\$(__git_dirty)$W+$NONE "
+    else
+      PS1="$BIBlack[\t] $UC\u$W@$R\h$C[$W\w$C]$G\$(__git_branch)$R\$(__git_dirty)$W+$NONE "
+    fi
+  else
+     PS1="$BIBlack[\t] $UC\u$W@$B\h$C[$W\w$C]$G\$(__git_branch)$R\$(__git_dirty)$W+$NONE "
+  fi
 }
 
 bash_prompt
