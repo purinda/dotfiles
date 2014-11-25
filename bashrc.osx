@@ -50,6 +50,7 @@ echo -ne "\033]0;`whoami`@`hostname`$@\007"
 
 source ~/.dotfiles/bash/aliases
 source ~/.dotfiles/bash/prompt
+source ~/.dotfiles/bash/iterm2_helpers
 
 # Work profile 
 . /Users/purinda/.dotfiles/scripts/work/news.sh
@@ -57,3 +58,5 @@ source ~/.dotfiles/bash/prompt
 # Some fonts were broken in VIM
 export LC_ALL=en_US.utf-8
 export LANG="$LC_ALL"
+
+
