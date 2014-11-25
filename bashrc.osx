@@ -48,6 +48,7 @@ echo -ne "\033]0;`whoami`@`hostname`$@\007"
 # If we are on a dev system, pull in the git bash profile
 . ~/.dotfiles/bash/profile_git
 
+source ~/.dotfiles/bash/iterm2_helpers
 source ~/.dotfiles/bash/aliases
 source ~/.dotfiles/bash/prompt
 
@@ -57,3 +58,5 @@ source ~/.dotfiles/bash/prompt
 # Some fonts were broken in VIM
 export LC_ALL=en_US.utf-8
 export LANG="$LC_ALL"
+
+

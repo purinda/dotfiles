@@ -83,7 +83,7 @@
 	<key>MaxVertically</key>
 	<false/>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/Projects/dotfiles/iterm2</string>
+	<string>~/Pictures/Wallpapers</string>
 	<key>NSQuotedKeystrokeBinding</key>
 	<string></string>
 	<key>NSRepeatCountBinding</key>
@@ -119,9 +119,9 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame Preferences</key>
-	<string>-1262 84 924 485 -1920 -100 1920 1057 </string>
+	<string>226 240 924 485 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>1 501 570 373 0 0 1440 877 </string>
+	<string>0 0 1440 900 0 0 1440 877 </string>
 	<key>NeverWarnAboutShortLivedSessions_F79B7386-5B96-4CB5-AD10-C6C98D29F791</key>
 	<true/>
 	<key>New Bookmarks</key>
@@ -295,15 +295,15 @@
 			<key>Background Image Location</key>
 			<string></string>
 			<key>Blend</key>
-			<real>0.30000001192092896</real>
+			<real>0.80495762825012207</real>
 			<key>Blink Allowed</key>
 			<true/>
 			<key>Blinking Cursor</key>
-			<false/>
+			<true/>
 			<key>Blur</key>
 			<false/>
 			<key>Blur Radius</key>
-			<real>2</real>
+			<real>0.10000000149011612</real>
 			<key>Bold Color</key>
 			<dict>
 				<key>Blue Component</key>
@@ -318,7 +318,7 @@
 			<key>Close Sessions On End</key>
 			<true/>
 			<key>Columns</key>
-			<integer>80</integer>
+			<integer>120</integer>
 			<key>Command</key>
 			<string></string>
 			<key>Cursor Color</key>
@@ -340,7 +340,7 @@
 				<real>1</real>
 			</dict>
 			<key>Cursor Type</key>
-			<integer>2</integer>
+			<integer>0</integer>
 			<key>Custom Command</key>
 			<string>No</string>
 			<key>Custom Directory</key>
@@ -667,7 +667,7 @@
 			<key>Log Directory</key>
 			<string></string>
 			<key>Minimum Contrast</key>
-			<real>0.4699999988079071</real>
+			<real>0.31205728650093079</real>
 			<key>Mouse Reporting</key>
 			<true/>
 			<key>Name</key>
@@ -689,7 +689,7 @@
 			<key>Screen</key>
 			<integer>-1</integer>
 			<key>Scrollback Lines</key>
-			<integer>0</integer>
+			<integer>10000</integer>
 			<key>Scrollback With Status Bar</key>
 			<false/>
 			<key>Scrollback in Alternate Screen</key>
@@ -829,11 +829,11 @@
 			<key>Terminal Type</key>
 			<string>xterm-256color</string>
 			<key>Transparency</key>
-			<real>0.55178672075271606</real>
+			<real>0.0</real>
 			<key>Triggers</key>
 			<array/>
 			<key>Unlimited Scrollback</key>
-			<true/>
+			<false/>
 			<key>Use Bold Font</key>
 			<false/>
 			<key>Use Bright Bold</key>
@@ -847,7 +847,7 @@
 			<key>Visual Bell</key>
 			<true/>
 			<key>Window Type</key>
-			<integer>0</integer>
+			<integer>1</integer>
 			<key>Working Directory</key>
 			<string>/Users/purinda</string>
 		</dict>
@@ -860,6 +860,8 @@
 	<false/>
 	<key>OpenTmuxWindowsIn</key>
 	<integer>0</integer>
+	<key>PMPrintingExpandedStateForPrint2</key>
+	<false/>
 	<key>PassOnControlClick</key>
 	<false/>
 	<key>PasteFromClipboard</key>
@@ -916,19 +918,19 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2014-11-19T00:31:50Z</date>
+	<date>2014-11-21T03:12:41Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
-	<true/>
+	<false/>
 	<key>ShowPaneTitles</key>
 	<true/>
 	<key>SmartPlacement</key>
 	<true/>
 	<key>SplitPaneDimmingAmount</key>
-	<real>0.43446013331413269</real>
+	<real>0.10000000149011612</real>
 	<key>SwitchTabModifier</key>
 	<integer>4</integer>
 	<key>SwitchWindowModifier</key>
