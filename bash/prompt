@@ -32,11 +32,20 @@ bash_prompt() {
     if grep dev $ENV > /dev/null 
     then
       PS1="$BIBlack[\t] $UC\u$W@$Y\h$C[$W\w$C]$G\$(__git_branch)$R\$(__git_dirty)$W+$NONE "
+
+      # Change tab color
+      tab_yellow
     else
       PS1="$BIBlack[\t] $UC\u$W@$R\h$C[$W\w$C]$G\$(__git_branch)$R\$(__git_dirty)$W+$NONE "
+
+      # Change tab color
+      tab_red
     fi
   else
      PS1="$BIBlack[\t] $UC\u$W@$B\h$C[$W\w$C]$G\$(__git_branch)$R\$(__git_dirty)$W+$NONE "
+
+     # Change tab color
+     tab_blue
   fi
 }
 
