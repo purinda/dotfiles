@@ -114,10 +114,10 @@ if ! shopt -oq posix; then
 fi
 
 
+source ~/Projects/dotfiles/bash/iterm2_helpers
 source ~/Projects/dotfiles/bash/profile_git
 source ~/Projects/dotfiles/bash/prompt
 source ~/Projects/dotfiles/bash/aliases
-source ~/Projects/dotfiles/bash/noggin
 source ~/Projects/dotfiles/bash/functions
 
 # Display something useful in terminal label 
