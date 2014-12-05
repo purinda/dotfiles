@@ -1,2 +1,4 @@
 vim/.netrwhist
 logs/*
+scripts/node_modules/
+vim/bundle/
