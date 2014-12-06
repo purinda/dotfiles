@@ -4,6 +4,9 @@ call pathogen#incubate()
 call pathogen#helptags()
 filetype on
 
+" Keep cursor vertically centered
+set so=999
+
 " Auto change the directory
 autocmd BufEnter * silent! lcd %:p:h
 
