@@ -43,6 +43,9 @@ alias sv='sudo vim'
 alias g='grep -HIin --colour=always' 
 alias sg='grep -HIrin --colour=always' 
 
+# run commands as Apache user (www-data)
+alias as-apache='sudo -u www-data'
+
 # OS Agnostic aliases
 if [ "$(uname)" == "Darwin" ]; then
 
