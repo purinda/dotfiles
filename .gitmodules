@@ -89,3 +89,6 @@
 [submodule "vim/bundle/OmniCppComplete"]
 	path = vim/bundle/OmniCppComplete
 	url = https://github.com/vim-scripts/OmniCppComplete.git
+[submodule "bin/pr"]
+	path = bin/pr
+	url = git@bitbucket.org:tonyrq/pr.git
