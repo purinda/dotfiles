@@ -4,7 +4,7 @@
     ignore = dirty
 [submodule "vim/bundle/nerdtree"]
 	path = vim/bundle/nerdtree
-	url = https://github.com/vim-scripts/The-NERD-tree.git
+	url = https://github.com/scrooloose/nerdtree.git
     ignore = dirty
 [submodule "vim/bundle/vimwiki"]
 	path = vim/bundle/vimwiki
@@ -92,3 +92,15 @@
 [submodule "bin/pr"]
 	path = bin/pr
 	url = git@bitbucket.org:tonyrq/pr.git
+[submodule "vim/bundle/ctrlp.vim"]
+	path = vim/bundle/ctrlp.vim
+	url = https://github.com/kien/ctrlp.vim.git
+[submodule "vim/bundle/supertab"]
+	path = vim/bundle/supertab
+	url = https://github.com/ervandew/supertab.git
+[submodule "vim/bundle/MatchTagAlways"]
+	path = vim/bundle/MatchTagAlways
+	url = https://github.com/Valloric/MatchTagAlways.git
+[submodule "vim/bundle/vim-surround"]
+	path = vim/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround.git
