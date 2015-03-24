@@ -84,6 +84,6 @@ fi
 # Hosts
 
 # Hosts - vm
-alias ks='ssh purinda@192.168.56.101'
-alias scratch='ssh purinda@192.168.56.100'
+alias ks='ssh purinda@10.11.0.3'
+alias scratch='ssh purinda@10.11.0.4'
 
