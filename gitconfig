@@ -56,3 +56,9 @@
 	trustExitCode = true
 [push]
 	default = simple
+[http]
+	proxy = http://192.168.56.1:3128
+[https]
+	proxy = https://192.168.56.1:3128
+[ftp]
+	proxy = ftp://192.168.56.1:3128
