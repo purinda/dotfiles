@@ -97,6 +97,9 @@ elif hash htop-macosx 2>/dev/null; then
     alias top='htop-macosx'
 fi
 
+# Composer
+alias composer='composer -vvv --profile'
+
 # Hosts
 
 # Hosts - vm
