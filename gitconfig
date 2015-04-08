@@ -57,8 +57,8 @@
 [push]
 	default = simple
 [http]
-	proxy = http://192.168.56.1:3128
+	proxy = http://10.11.0.2:3128
 [https]
-	proxy = https://192.168.56.1:3128
+	proxy = https://10.11.0.2:3128
 [ftp]
-	proxy = ftp://192.168.56.1:3128
+	proxy = ftp://10.11.0.2:3128
