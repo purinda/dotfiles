@@ -117,7 +117,7 @@ export TERM="xterm-256color"
 export EDITOR=`which vim`
 
 # Some fonts were broken in VIM
-export LC_ALL=en_US.utf-8
+export LC_ALL=en_AU.utf-8
 export LANG="$LC_ALL"
 
 # No Proxy

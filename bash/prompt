@@ -1,14 +1,5 @@
 ENV=${HOME}/env
 
-function __git_dirty {
-  git diff --quiet HEAD &>/dev/null 
-  [ $? == 1 ] && echo "!" 
-}
-
-function __git_branch {
-  __git_ps1 "[%s]"
-}
-
 bash_prompt() {
   local NONE="\[\033[0m\]"    # unsets color to term's fg color
 

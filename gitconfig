@@ -28,7 +28,7 @@
     todo = !ugrep -e TODO
     permission-reset = !git diff -p -R | grep -E \"^(diff|(old|new) mode)\" | git apply
 [core]
-	excludesfile = /Users/purinda/.gitignore_global
+	excludesfile = ~/.gitignore_global
     whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
     editor = vim
 [color]
@@ -57,8 +57,8 @@
 [push]
 	default = simple
 [http]
-	proxy = http://10.11.0.2:3128
+    # proxy = http://10.11.0.2:3128
 [https]
-	proxy = https://10.11.0.2:3128
+    # proxy = https://10.11.0.2:3128
 [ftp]
-	proxy = ftp://10.11.0.2:3128
+    # proxy = ftp://10.11.0.2:3128

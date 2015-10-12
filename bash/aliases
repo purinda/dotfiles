@@ -42,6 +42,7 @@ alias s='sudo'
 alias sv='sudo vim'
 alias g='grep -HIin --colour=always' 
 alias sg='grep -HIrin --colour=always' 
+alias phpunit="./vendor/bin/phpunit"
 
 # run commands as Apache user (www-data)
 alias as-apache='sudo -u www-data'
@@ -72,7 +73,6 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # some more ls aliases
-alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
@@ -103,6 +103,5 @@ alias composer='composer -vvv --profile'
 # Hosts
 
 # Hosts - vm
-alias ks='ssh purinda@10.11.0.3'
-alias scratch='ssh purinda@10.11.0.4'
+alias scratch='ssh purinda@10.11.1.5'
 
