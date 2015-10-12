@@ -1,0 +1,4 @@
+logs/*
+cache/*
+.DS_Store
+symfony_dev.php
