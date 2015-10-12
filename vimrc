@@ -54,7 +54,7 @@ let g:autotags_no_global = 1 " disable tagging global directories
 " let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 let NERDTreeWinSize = 45
-let g:nerdtree_tabs_open_on_console_startup = 1
+" let g:nerdtree_tabs_open_on_console_startup = 1
 let NERDTreeShowBookmarks=1
 
 "
@@ -98,7 +98,6 @@ set laststatus=2
 set foldmethod=marker
 set number
 set nocompatible
-set nottybuiltin term=$TERM
 set wildmode=longest:full
 set wildmenu
 set formatprg=par-format\ -w80

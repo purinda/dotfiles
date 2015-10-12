@@ -6,3 +6,21 @@ function parse_git_branch() {
 function svndiff () {
   svn diff ${1+"$@"} | colordiff | less -R
 }
+
+# No Proxy
+function noproxy
+{
+    unset http_proxy HTTP_PROXY https_proxy HTTPS_PROXY
+}
+
+# Proxy
+function setproxy
+{
+    http_proxy=http://10.11.0.2:3128/
+    HTTP_PROXY=$http_proxy
+    https_proxy=$http_proxy
+    HTTPS_PROXY=$https_proxy
+    export http_proxy https_proxy HTTP_PROXY HTTPS_PROXY
+}
+
+setproxy
