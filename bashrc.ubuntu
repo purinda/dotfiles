@@ -122,3 +122,6 @@ export LANG="$LC_ALL"
 
 # Trigger github hub
 eval "$(hub alias -s)"
+
+# Linux mint cows bullshit
+export ANSIBLE_NOCOWS=1
