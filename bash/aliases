@@ -42,7 +42,7 @@ alias s='sudo'
 alias sv='sudo vim'
 alias g='grep -HIin --colour=always' 
 alias sg='grep -HIrin --colour=always' 
-alias phpunit="./vendor/phpunit/phpunit"
+alias phpunit="./vendor/phpunit/phpunit/phpunit"
 
 # run commands as Apache user (www-data)
 alias as-apache='sudo -u www-data'
