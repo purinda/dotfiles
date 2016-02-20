@@ -23,4 +23,17 @@ function setproxy
     export http_proxy https_proxy HTTP_PROXY HTTPS_PROXY
 }
 
+# KIDSPOT PHOENIX ENV
+function set_kidspot
+{
+    export PHOENIX_ENV="kidspot_dev"
+}
+
+# BESTRECIPES PHOENIX ENV
+function set_bestrecipes
+{
+    export PHOENIX_ENV="bestrecipes_dev"
+}
+
+set_kidspot
 setproxy

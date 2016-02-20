@@ -83,11 +83,9 @@
 	<key>MaxVertically</key>
 	<false/>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/Documents</string>
+	<string>~/Projects/dotfiles/iterm2</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
-	<string>{712, 448}</string>
-	<key>NSNavPanelExpandedSizeForSaveMode</key>
-	<string>{712, 565}</string>
+	<string>{712, 459}</string>
 	<key>NSQuotedKeystrokeBinding</key>
 	<string></string>
 	<key>NSRepeatCountBinding</key>
@@ -119,13 +117,11 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame Preferences</key>
-	<string>519 571 606 456 0 0 1680 1027 </string>
-	<key>NSWindow Frame SUStatusFrame</key>
-	<string>-1191 849 400 129 -1920 150 1920 1057 </string>
+	<string>-1566 609 606 456 -1920 0 1920 1080 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
-	<string>-1286 335 620 392 -1920 150 1920 1057 </string>
+	<string>530 494 620 392 0 0 1680 1050 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>-1440 180 1440 900 -1440 180 1440 877 </string>
+	<string>-1920 100 1920 1080 -1920 100 1920 1057 </string>
 	<key>NeverWarnAboutShortLivedSessions_F79B7386-5B96-4CB5-AD10-C6C98D29F791</key>
 	<true/>
 	<key>New Bookmarks</key>
@@ -857,28 +853,15 @@
 		</dict>
 	</array>
 	<key>NoSyncLastTipTime</key>
-	<real>461984750.87894797</real>
+	<real>465710438.90705597</real>
+	<key>NoSyncPermissionToShowTip</key>
+	<true/>
 	<key>NoSyncSilenceAnnoyingBellAutomatically</key>
 	<true/>
+	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
+	<real>465464863.02577299</real>
 	<key>NoSyncTipsDisabled</key>
 	<true/>
-	<key>NoSyncTipsToNotShow</key>
-	<array>
-		<string>000</string>
-		<string>0000</string>
-		<string>0001</string>
-		<string>0002</string>
-		<string>0003</string>
-		<string>0004</string>
-		<string>0005</string>
-		<string>0006</string>
-		<string>0007</string>
-		<string>0008</string>
-		<string>0009</string>
-		<string>0010</string>
-		<string>0011</string>
-		<string>0012</string>
-	</array>
 	<key>OnlyWhenMoreTabs</key>
 	<true/>
 	<key>OpenArrangementAtStartup</key>
@@ -928,6 +911,8 @@
 	</dict>
 	<key>PrefsCustomFolder</key>
 	<string>/Users/purinda/Projects/dotfiles/iterm2</string>
+	<key>Print In Black And White</key>
+	<true/>
 	<key>PromptOnQuit</key>
 	<true/>
 	<key>QuitWhenAllWindowsClosed</key>
@@ -943,11 +928,11 @@
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>http://iterm2.com/appcasts/testing3.xml</string>
+	<string>https://iterm2.com/appcasts/testing3.xml</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2015-09-15T15:21:55Z</date>
+	<date>2016-01-04T08:22:07Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SavePasteHistory</key>
@@ -997,7 +982,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>2.9.20150830</string>
+	<string>2.9.20151229</string>
 	<key>kCommandHistoryHasEverBeenUsed</key>
 	<true/>
 </dict>
