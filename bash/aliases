@@ -105,3 +105,5 @@ alias composer='composer -vvv --profile'
 # Hosts - vm
 alias scratch='ssh purinda@10.11.1.5'
 
+# Laravel 
+alias lumen='~/.composer/vendor/laravel/lumen-installer/lumen'

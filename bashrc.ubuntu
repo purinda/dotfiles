@@ -125,3 +125,5 @@ eval "$(hub alias -s)"
 
 # Linux mint cows bullshit
 export ANSIBLE_NOCOWS=1
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

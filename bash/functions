@@ -2,7 +2,7 @@ function parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
-
+# Beautified SVN diff
 function svndiff () {
   svn diff ${1+"$@"} | colordiff | less -R
 }
@@ -13,27 +13,3 @@ function noproxy
     unset http_proxy HTTP_PROXY https_proxy HTTPS_PROXY
 }
 
-# Proxy
-function setproxy
-{
-    http_proxy=http://10.11.0.2:3128/
-    HTTP_PROXY=$http_proxy
-    https_proxy=$http_proxy
-    HTTPS_PROXY=$https_proxy
-    export http_proxy https_proxy HTTP_PROXY HTTPS_PROXY
-}
-
-# KIDSPOT PHOENIX ENV
-function set_kidspot
-{
-    export PHOENIX_ENV="kidspot_dev"
-}
-
-# BESTRECIPES PHOENIX ENV
-function set_bestrecipes
-{
-    export PHOENIX_ENV="bestrecipes_dev"
-}
-
-set_kidspot
-setproxy
