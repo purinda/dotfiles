@@ -52,7 +52,7 @@ source ~/.dotfiles/bash/aliases
 source ~/.dotfiles/bash/prompt
 
 # Work profile 
-. ~/bin/init-news
+. ~/bin/init-3rdsense
 
 # Some fonts were broken in VIM
 export LC_ALL=en_US.utf-8

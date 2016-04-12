@@ -4,6 +4,9 @@ call pathogen#incubate()
 call pathogen#helptags()
 filetype on
 
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! w !sudo tee > /dev/null %
+
 " Keep cursor vertically centered
 set so=999
 
