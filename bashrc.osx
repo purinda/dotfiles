@@ -60,5 +60,8 @@ export LANG="$LC_ALL"
 
 # Profile path
 PATH=$PATH:$HOME/bin; export PATH
+
+# PHP7.0
+export PATH="$(brew --prefix homebrew/php/php70)/bin:$PATH"
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
