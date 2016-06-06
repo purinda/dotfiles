@@ -1,4 +1,5 @@
-alias c='clear'
+# Commented to support docker short hand aliases
+# alias c='clear'
 alias cdc='cd;clear'
 alias s='sudo'
 alias v='vim'
@@ -15,7 +16,8 @@ alias reboot='sudo reboot'
 alias sc='screen'
 alias scr='screen -r'
 alias vw='vim ~/var/wiki/index.wiki'
-alias d='date'
+# Commented to support docker short hand aliases
+# alias d='date'
 alias g='git'
 alias gb='git branch'
 alias gs='git status'
@@ -43,6 +45,20 @@ alias sv='sudo vim'
 alias g='grep -HIin --colour=always' 
 alias sg='grep -HIrin --colour=always' 
 alias phpunit="./vendor/phpunit/phpunit/phpunit"
+
+# Docker / Docker Composer 
+composeEnv() {
+    eval $(docker-machine env $1)
+}
+
+alias d='docker-machine'
+alias dstart='docker-machine start'
+alias dstop='docker-machine stop'
+alias c=docker-compose
+alias cenv=composeEnv
+alias cup='docker-compose up -d'
+alias cdown='docker-compose down'
+alias cexec='docker-compose exec'
 
 # run commands as Apache user (www-data)
 alias as-apache='sudo -u www-data'
