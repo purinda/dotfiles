@@ -101,11 +101,11 @@ if ! shopt -oq posix; then
 fi
 
 
-source ~/Projects/dotfiles/bash/iterm2_helpers
-source ~/Projects/dotfiles/bash/profile_git
-source ~/Projects/dotfiles/bash/prompt
-source ~/Projects/dotfiles/bash/aliases
-source ~/Projects/dotfiles/bash/functions
+source ~/src/dotfiles/bash/iterm2_helpers
+source ~/src/dotfiles/bash/profile_git
+source ~/src/dotfiles/bash/prompt
+source ~/src/dotfiles/bash/aliases
+source ~/src/dotfiles/bash/functions
 
 # Display something useful in terminal label 
 echo -ne "\033]0;`whoami`@`hostname`$@\007"

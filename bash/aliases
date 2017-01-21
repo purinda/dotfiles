@@ -54,8 +54,8 @@ composeEnv() {
 alias d='docker-machine'
 alias dstart='docker-machine start'
 alias dstop='docker-machine stop'
+alias denv=composeEnv
 alias c=docker-compose
-alias cenv=composeEnv
 alias cup='docker-compose up -d'
 alias cdown='docker-compose down'
 alias cexec='docker-compose exec'
@@ -111,6 +111,11 @@ if hash htop 2>/dev/null; then
     alias top='htop'
 elif hash htop-macosx 2>/dev/null; then
     alias top='htop-macosx'
+fi
+
+# use ggrep if installed on OSX instead of BSD grep
+if hash ggrep 2>/dev/null; then
+    alias grep='ggrep'
 fi
 
 # Composer

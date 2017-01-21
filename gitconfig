@@ -62,3 +62,8 @@
     # proxy = https://10.11.0.2:3128
 [ftp]
     # proxy = ftp://10.11.0.2:3128
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
