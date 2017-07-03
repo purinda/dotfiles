@@ -1,0 +1,1 @@
+alias mvn='HTTPS_PROXY=proxy.openbet:8080 mvn'

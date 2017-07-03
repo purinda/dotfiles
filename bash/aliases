@@ -101,7 +101,6 @@ alias l='ls -CF'
 # rDesktop 
 alias rd="rdesktop -zN -g1368x720"
 
-
 #
 # Command aliases
 #
@@ -120,11 +119,6 @@ fi
 
 # Composer
 alias composer='composer -vvv --profile'
-
-# Hosts
-
-# Hosts - vm
-alias scratch='ssh purinda@10.11.1.5'
 
 # Laravel 
 alias lumen='~/.composer/vendor/laravel/lumen-installer/lumen'
