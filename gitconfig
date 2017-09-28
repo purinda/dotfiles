@@ -1,6 +1,6 @@
 [user]
 	name = Purinda Gunasekara
-	email = purinda@gmail.com
+	email = purinda.gunasekara@openbet.com
 [alias]
     co = checkout
     br = branch
@@ -32,7 +32,7 @@
     whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
     editor = vim
 [color]
-    ui = true
+	ui = true
 [color "branch"]
     current = green
     local = blue
@@ -55,7 +55,7 @@
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [push]
-	default = simple
+	default = current
 [http]
     # proxy = http://10.11.0.2:3128
 [https]
@@ -67,3 +67,6 @@
 	oldHighlight = red bold 52
 	newNormal = green bold
 	newHighlight = green bold 22
+[http]
+	sslVerify = false
+#    proxy = http://proxy.openbet:8080
