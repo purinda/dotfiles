@@ -127,3 +127,6 @@ eval "$(hub alias -s)"
 export ANSIBLE_NOCOWS=1
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# Work profile
+. ~/bin/init-sb
