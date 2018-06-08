@@ -1,2 +1,0 @@
-export VBOXAUTOSTART_DB=/etc/vbox
-export VBOXAUTOSTART_CONFIG=/etc/vbox/vbox.cfg

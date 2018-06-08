@@ -51,9 +51,6 @@ source ~/.dotfiles/bash/iterm2_helpers
 source ~/.dotfiles/bash/aliases
 source ~/.dotfiles/bash/prompt
 
-# Work profile 
-. ~/bin/init-sb
-
 # Some fonts were broken in VIM
 export LC_ALL=en_US.utf-8
 export LANG="$LC_ALL"
@@ -71,8 +68,8 @@ export PATH=$PATH:$HOME/.composer/vendor/bin
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
 
-export PATH="$HOME/.cargo/bin:$PATH"
-source $HOME/.cargo/env
+# export PATH="$HOME/.cargo/bin:$PATH"
+# source $HOME/.cargo/env
 
 # Mongoose OS bin
 export PATH="~/.mos/bin/:$PATH"
