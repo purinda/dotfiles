@@ -128,5 +128,8 @@ export ANSIBLE_NOCOWS=1
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+# Home paths
+export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+
 # Work profile
 . ~/bin/init-sb

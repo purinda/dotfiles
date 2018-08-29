@@ -1,6 +1,3 @@
-# Setup proxy for maven
-# alias mvn='HTTPS_PROXY=proxy.openbet:8080 mvn'
-
 #
 # Reference https://stash.int.openbet.com/users/icollar/repos/openbet-stack/browse
 # Stack environment variables

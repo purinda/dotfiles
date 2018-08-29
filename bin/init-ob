@@ -3,5 +3,4 @@
 export PATH=${PATH}:~/git_src/openbet-stack
 export STACK_PROJECT_DIR=~/git_src/sportsbet-stack
 source ~/git_src/openbet-stack/functions
-
 source ~/.dotfiles/work/sb/alias

@@ -1,56 +1,27 @@
 # Commented to support docker short hand aliases
-# alias c='clear'
-alias cdc='cd;clear'
 alias s='sudo'
 alias v='vim'
-alias sv='sudo vim'
 alias lsd='ll -d */'
-#alias lss='ls -lSh'
 alias h='history | grep $1'
-alias x='startx'
 alias q='exit'
-alias ZZ='exit'
-alias r='cd;c'
 alias shutdown='sudo shutdown -h now'
 alias reboot='sudo reboot'
-alias sc='screen'
-alias scr='screen -r'
-alias vw='vim ~/var/wiki/index.wiki'
+
 # Commented to support docker short hand aliases
-# alias d='date'
 alias g='git'
-alias gb='git branch'
 alias gs='git status'
 alias ga='git add'
 alias gci='git commit'
 alias gc='git checkout'
-alias gcb='git -b checkout'
-alias gai='git add -i'
-alias gsr='git svn rebase'
-alias gri='git rebase -i'
 alias gl='git lg'
-alias gpl='git pull'
 alias gp='git push'
 alias gd='git diff'
 alias gcv='git commit -v'
-alias sectome='ssh `whoami`@secto.me'
 alias v="vim"
 alias vr="vim -R"
 alias sv="sudo vim"
-alias q='exit'
-alias c='clear'
 alias tree='tree -C'
-alias s='sudo'
-alias sv='sudo vim'
-alias g='grep -HIin --colour=always' 
 alias sg='grep -HIrin --colour=always' 
-alias phpunit="./vendor/phpunit/phpunit/phpunit"
-
-# Docker / Docker Composer 
-composeEnv() {
-    eval $(docker-machine env $1)
-}
-
 alias d='docker-machine'
 alias dstart='docker-machine start'
 alias dstop='docker-machine stop'
@@ -63,7 +34,29 @@ alias cexec='docker-compose exec'
 # run commands as Apache user (www-data)
 alias as-apache='sudo -u www-data'
 
-# OS Agnostic aliases
+alias la='ls -A'
+alias l='ls -CF'
+
+# Composer
+alias composer='composer -vvv --profile'
+
+#
+# Command aliases
+#
+
+# use htop instead of top if htop is installed
+if hash htop 2>/dev/null; then
+    alias top='htop'
+elif hash htop-macosx 2>/dev/null; then
+    alias top='htop-macosx'
+fi
+
+# use ggrep if installed on OSX instead of BSD grep
+if hash ggrep 2>/dev/null; then
+    alias grep='ggrep'
+fi
+
+# OS specific aliases
 if [ "$(uname)" == "Darwin" ]; then
 
     alias ll='ls -lhFG'
@@ -87,38 +80,3 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
-
-# some more ls aliases
-alias la='ls -A'
-alias l='ls -CF'
-
-# Overide these aliases privided by the above
-# aliases file. They don't play well with BSD.
-#alias ll="ls -lG"
-#alias ls="ls -G"
-#alias all="ls -la"
-
-# rDesktop 
-alias rd="rdesktop -zN -g1368x720"
-
-#
-# Command aliases
-#
-
-# use htop instead of top if htop is installed
-if hash htop 2>/dev/null; then
-    alias top='htop'
-elif hash htop-macosx 2>/dev/null; then
-    alias top='htop-macosx'
-fi
-
-# use ggrep if installed on OSX instead of BSD grep
-if hash ggrep 2>/dev/null; then
-    alias grep='ggrep'
-fi
-
-# Composer
-alias composer='composer -vvv --profile'
-
-# Laravel 
-alias lumen='~/.composer/vendor/laravel/lumen-installer/lumen'
