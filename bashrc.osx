@@ -25,17 +25,6 @@ HISTFILESIZE=2000
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# Android SDK
-export ANDROID_SDK_ROOT=/usr/local/opt/android-sdk
-export ANDROID_HOME=/usr/local/opt/android-sdk
-
-# GoLang requisites
-export GOPATH=$HOME/Go
-export PATH=$PATH:/usr/local/opt/go/libexec/bin
-
-# Raspberry Pi Cross compiler toolchain
-export PATH=/Users/purinda/Packages/arm-eabi-toolchain/bin:$PATH
-
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
   . $(brew --prefix)/etc/bash_completion
   . /usr/local/etc/bash_completion.d/adb-completion.bash
@@ -60,19 +49,12 @@ export PATH=$PATH:$HOME/bin;
 
 # PHP7.0
 # export PATH="$(brew --prefix homebrew/php/php70)/bin:$PATH"
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 # Composer
 export PATH=$PATH:$HOME/.composer/vendor/bin
 
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
-
-# export PATH="$HOME/.cargo/bin:$PATH"
-# source $HOME/.cargo/env
-
-# Mongoose OS bin
-export PATH="~/.mos/bin/:$PATH"
 
 # OSX /usr/local/bin/
 export PATH="/usr/local/bin/:$PATH"
