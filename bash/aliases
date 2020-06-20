@@ -80,3 +80,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
+
+# Docker machine start and config
+alias dmenv='setup_dockermachine $1'

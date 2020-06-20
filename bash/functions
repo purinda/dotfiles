@@ -13,7 +13,8 @@ function noproxy
     unset http_proxy HTTP_PROXY https_proxy HTTPS_PROXY
 }
 
-# Docker / Docker Composer 
-composeEnv() {
+# Docker machine and docker shell setup
+setup_dockermachine() {
+    docker-machine start $1
     eval $(docker-machine env $1)
 }
