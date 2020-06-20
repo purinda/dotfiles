@@ -25,7 +25,7 @@ alias sg='grep -HIrin --colour=always'
 alias d='docker-machine'
 alias dstart='docker-machine start'
 alias dstop='docker-machine stop'
-alias denv=composeEnv
+alias dmenv='setup_dockermachine $1'
 alias c=docker-compose
 alias cup='docker-compose up -d'
 alias cdown='docker-compose down'
@@ -81,5 +81,3 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# Docker machine start and config
-alias dmenv='setup_dockermachine $1'
