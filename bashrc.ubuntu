@@ -101,11 +101,11 @@ if ! shopt -oq posix; then
 fi
 
 
-source ~/src/dotfiles/bash/iterm2_helpers
-source ~/src/dotfiles/bash/profile_git
-source ~/src/dotfiles/bash/prompt
-source ~/src/dotfiles/bash/aliases
-source ~/src/dotfiles/bash/functions
+source ~/.dotfiles/bash/iterm2_helpers
+source ~/.dotfiles/bash/profile_git
+source ~/.dotfiles/bash/prompt
+source ~/.dotfiles/bash/aliases
+source ~/.dotfiles/bash/functions
 
 # Display something useful in terminal label 
 echo -ne "\033]0;`whoami`@`hostname`$@\007"
@@ -130,6 +130,3 @@ export ANSIBLE_NOCOWS=1
 
 # Home paths
 export JAVA_HOME=/usr/lib/jvm/java-8-oracle
-
-# Work profile
-. ~/bin/init-sb
