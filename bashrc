@@ -2,11 +2,6 @@
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
 
-# Profile HOME bin
-if [ -d "$HOME/bin" ] ; then
-  PATH="$HOME/bin:$PATH"
-fi
-
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -61,51 +56,56 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
-if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
-fi
-unset color_prompt force_color_prompt
-
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# Alias definitions.
-# You may want to put all your additions into a separate file like
-# ~/.bash_aliases, instead of adding them here directly.
-# See /usr/share/doc/bash-doc/examples in the bash-doc package.
-
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
-fi
-
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
   elif [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
   fi
+  
+  # Include bash_completion from system level (ex: Fedora)
+  if [ -d /etc/bash_completion.d/ ]; then
+    for rc in /etc/bash_completion.d/*; do
+      if [ -f "$rc" ]; then
+        source "$rc"
+      fi
+    done
+  fi
 fi
 
 
-source ~/.dotfiles/bash/iterm2_helpers
-source ~/.dotfiles/bash/profile_git
-source ~/.dotfiles/bash/prompt
-source ~/.dotfiles/bash/aliases
-source ~/.dotfiles/bash/functions
+# User specific aliases and functions
+if [ -d ~/.bashrc.d ]; then
+  for rc in ~/.bashrc.d/*; do
+    if [ -f "$rc" ]; then
+      . "$rc"
+    fi
+  done
+else
+  echo "Minimal shell loaded"
+  echo "Symlink 'bashrc.d' on your dotfiles to your home directory to source additional bash functionality."
+  echo 
+fi
+
+# User specific environment
+if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
+then
+    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+fi
+
+export PATH
 
 # Display something useful in terminal label 
 echo -ne "\033]0;`whoami`@`hostname`$@\007"
@@ -120,13 +120,5 @@ export EDITOR=`which vim`
 export LC_ALL=en_AU.utf-8
 export LANG="$LC_ALL"
 
-# Trigger github hub
-eval "$(hub alias -s)"
-
 # Linux mint cows bullshit
 export ANSIBLE_NOCOWS=1
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-# Home paths
-export JAVA_HOME=/usr/lib/jvm/java-8-oracle
