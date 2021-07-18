@@ -63,6 +63,11 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
     . /usr/share/bash-completion/bash_completion
@@ -78,15 +83,20 @@ if ! shopt -oq posix; then
       fi
     done
   fi
+fi
 
-  # User specific aliases and functions
-  if [ -d ~/.bashrc.d ]; then
-    for rc in ~/.bashrc.d/*; do
-      if [ -f "$rc" ]; then
-        . "$rc"
-      fi
-    done
-  fi
+
+# User specific aliases and functions
+if [ -d ~/.bashrc.d ]; then
+  for rc in ~/.bashrc.d/*; do
+    if [ -f "$rc" ]; then
+      . "$rc"
+    fi
+  done
+else
+  echo "Minimal shell loaded"
+  echo "Symlink 'bashrc.d' on your dotfiles to your home directory to source additional bash functionality."
+  echo 
 fi
 
 # User specific environment

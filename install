@@ -1,0 +1,27 @@
+#!/bin/env bash
+CWD=`pwd`
+SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+
+# Existing bashrc files before installation
+if [ -f ~/.bashrc ]; then
+    mv ~/.bashrc ~/.bashrc.orig
+fi
+
+if [ -f ~/.bash_profile ]; then
+    mv ~/.bash_profile ~/.bash_profile.orig
+fi
+
+# Create symlinks
+ln -sf $SCRIPTPATH/bash_profile ~/.bash_profile
+ln -sf $SCRIPTPATH/bashrc ~/.bashrc
+ln -sf $SCRIPTPATH/vimrc ~/.vimrc
+ln -sf $SCRIPTPATH/vim ~/.vim
+ln -sf $SCRIPTPATH/bin ~/bin
+ln -sf $SCRIPTPATH/git/gitconfig ~/.gitconfig
+ln -sf $SCRIPTPATH/git/gitignore_global ~/.gitignore
+
+# Update sub-modules
+cd $SCRIPTPATH
+git submodule init && git submodule update
+git submodule foreach git pull origin master
+cd $CWD
