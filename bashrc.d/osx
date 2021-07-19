@@ -1,22 +1,18 @@
-if [[ "$OSTYPE" != "darwin"* ]]; then
-    exit
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    # Brew
+    eval $(/opt/homebrew/bin/brew shellenv)
+
+    # PHP7.0
+    # export PATH="$(brew --prefix homebrew/php/php70)/bin:$PATH"
+    export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+    export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+
+    # OSX /usr/local/bin/
+    export PATH="/usr/local/bin/:$PATH"
+    export PATH="/usr/local/sbin:$PATH"
+
+    # Brew paths
+    export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+    export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
+    export PATH="/opt/homebrew/opt/tcl-tk/bin:$PATH"
 fi
-
-# Brew
-eval $(/opt/homebrew/bin/brew shellenv)
-
-
-# PHP7.0
-# export PATH="$(brew --prefix homebrew/php/php70)/bin:$PATH"
-
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
-
-# OSX /usr/local/bin/
-export PATH="/usr/local/bin/:$PATH"
-export PATH="/usr/local/sbin:$PATH"
-
-# Brew paths
-export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
-export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
-export PATH="/opt/homebrew/opt/tcl-tk/bin:$PATH"
