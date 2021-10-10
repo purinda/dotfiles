@@ -122,3 +122,4 @@ export LANG="$LC_ALL"
 
 # Linux mint cows bullshit
 export ANSIBLE_NOCOWS=1
+export AWS_PROFILE=saml
