@@ -1,0 +1,2 @@
+PATH="$PATH:/home/purinda/src/sdk/flutter/bin"
+CHROME_EXECUTABLE=/usr/bin/google-chrome
