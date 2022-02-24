@@ -116,9 +116,5 @@ export TERM="xterm-256color"
 # set vim as the default editor so that commit messages will open it.
 export EDITOR=`which vim`
 
-# Some fonts were broken in VIM
-export LC_ALL=en_AU.utf-8
-export LANG="$LC_ALL"
-
 # Linux mint cows bullshit
 export ANSIBLE_NOCOWS=1
