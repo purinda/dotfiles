@@ -16,53 +16,25 @@ alias gc='git checkout'
 alias gl='git lg'
 alias gp='git push'
 alias gd='git diff'
-alias gcv='git commit -v'
-alias v="vim"
-alias vr="vim -R"
-alias sv="sudo vim"
 alias tree='tree -C'
 alias sg='grep -HIrin --colour=always' 
-alias d='docker-machine'
-alias dstart='docker-machine start'
-alias dstop='docker-machine stop'
 alias dmenv='setup_dockermachine $1'
 alias c=docker-compose
 alias cup='docker-compose up -d'
-alias cdown='docker-compose down'
-alias cexec='docker-compose exec'
-
-# run commands as Apache user (www-data)
-alias as-apache='sudo -u www-data'
 
 alias la='ls -A'
 alias l='ls -CF'
-
 
 unset use_color safe_term match_lhs sh
 
 alias cp="cp -i"                          # confirm before overwriting something
 alias df='df -h'                          # human-readable sizes
 alias free='free -mh'                     # show sizes in MB
-alias np='nano -w PKGBUILD'
 alias more=less
 
-# Composer
-alias composer='composer -vvv --profile'
-
-#
-# Command aliases
-#
-
 # use htop instead of top if htop is installed
-if hash htop 2>/dev/null; then
+if type htop &>/dev/null; then
     alias top='htop'
-elif hash htop-macosx 2>/dev/null; then
-    alias top='htop-macosx'
-fi
-
-# use ggrep if installed on OSX instead of BSD grep
-if hash ggrep 2>/dev/null; then
-    alias grep='ggrep'
 fi
 
 # OS specific aliases
@@ -77,16 +49,3 @@ elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
     alias all='ls -AlhiF --color'
 
 fi
-
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
-
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-

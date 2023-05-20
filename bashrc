@@ -40,11 +40,6 @@ case "$TERM" in
     xterm-color) color_prompt=yes;;
 esac
 
-# uncomment for a colored prompt, if the terminal has the capability; turned
-# off by default to not distract the user: the focus in a terminal window
-# should be on the output of commands, not on the prompt
-#force_color_prompt=yes
-
 if [ -n "$force_color_prompt" ]; then
     if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
 	# We have color support; assume it's compliant with Ecma-48
@@ -65,14 +60,14 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # sources /etc/bash.bashrc).
 # Source global definitions
 if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
+	source /etc/bashrc
 fi
 
 if ! shopt -oq posix; then
   if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
+    source /usr/share/bash-completion/bash_completion
   elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
+    source /etc/bash_completion
   fi
   
   # Include bash_completion from system level (ex: Fedora)
@@ -85,20 +80,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
-# User specific aliases and functions
-if [ -d ~/.bashrc.d ]; then
-  for rc in ~/.bashrc.d/*; do
-    if [ -f "$rc" ]; then
-      . "$rc"
-    fi
-  done
-else
-  echo "Minimal shell loaded"
-  echo "Symlink 'bashrc.d' on your dotfiles to your home directory to source additional bash functionality."
-  echo 
-fi
-
 # User specific environment
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
 then
@@ -106,6 +87,20 @@ then
 fi
 
 export PATH
+
+# User specific aliases and functions
+if [ -d ~/.bashrc.d ]; then
+  for rc in ~/.bashrc.d/*; do
+    if [ -f "$rc" ]; then
+      echo "loading $rc"
+      source "$rc"
+    fi
+  done
+else
+  echo "Minimal shell loaded"
+  echo "Symlink 'bashrc.d' on your dotfiles to your home directory to source additional bash functionality."
+  echo 
+fi
 
 # Display something useful in terminal label 
 echo -ne "\033]0;`whoami`@`hostname`$@\007"
