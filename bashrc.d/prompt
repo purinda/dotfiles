@@ -17,7 +17,10 @@ bash_prompt() {
 
   local UC=$C                 # user's color
   [ $UID -eq "0" ] && UC=$R   # root's color
-  
+ 
+  # Default tab color
+  tab_blue
+ 
   if [ -f $ENV ]; 
   then
     if grep dev $ENV > /dev/null 
@@ -26,7 +29,8 @@ bash_prompt() {
 
       # Change tab color
       tab_green
-    else
+    elif grep prod $ENV > /dev/null
+    then
       PS1="$BIBlack[\t] $UC\u$W@$R\h$C[$W\w$C]$G\$(__git_branch)$R\$(__git_dirty)$W+$NONE "
 
       # Change tab color
@@ -34,9 +38,6 @@ bash_prompt() {
     fi
   else
      PS1="$BIBlack[\t] $UC\u$W@$B\h$C[$W\w$C]$G\$(__git_branch)$R\$(__git_dirty)$W+$NONE "
-
-     # Change tab color
-     tab_blue
   fi
 }
 
