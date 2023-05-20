@@ -92,7 +92,6 @@ export PATH
 if [ -d ~/.bashrc.d ]; then
   for rc in ~/.bashrc.d/*; do
     if [ -f "$rc" ]; then
-      echo "loading $rc"
       source "$rc"
     fi
   done
