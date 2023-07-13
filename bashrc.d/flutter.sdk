@@ -1,2 +1,1 @@
-PATH="$PATH:/home/purinda/src/sdk/flutter/bin"
-CHROME_EXECUTABLE=/usr/bin/google-chrome
+export PATH="$PATH:/Users/purinda/Development/flutter/bin"
