@@ -107,8 +107,8 @@ echo -ne "\033]0;`whoami`@`hostname`$@\007"
 # Extra colors
 export TERM="xterm-256color"
 
-# set vim as the default editor so that commit messages will open it.
-export EDITOR=`which vim`
+# set lvim as the default editor so that commit messages will open it.
+export EDITOR=`which lvim`
 
 # Linux mint cows bullshit
 export ANSIBLE_NOCOWS=1

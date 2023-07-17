@@ -15,14 +15,25 @@ fi
 ln -sf $SCRIPTPATH/bash_profile ~/.bash_profile
 ln -sf $SCRIPTPATH/bashrc ~/.bashrc
 ln -sf $SCRIPTPATH/bashrc.d ~/.bashrc.d
-ln -sf $SCRIPTPATH/vimrc ~/.vimrc
-ln -sf $SCRIPTPATH/vim ~/.vim
 ln -sf $SCRIPTPATH/bin ~/bin
 ln -sf $SCRIPTPATH/git/gitconfig ~/.gitconfig
 ln -sf $SCRIPTPATH/git/gitignore_global ~/.gitignore
 
-# Update sub-modules
-cd $SCRIPTPATH
-git submodule init && git submodule update
-git submodule foreach git pull origin master
+# Setup neovim and lvim
+NVIM=1
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  echo "Linux detected. Installing nvim.."
+  sudo apt-get install neovim
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+  echo "macOS (OSX) detected. Installing nvim.."
+  brew install neovim
+else
+  echo "Unknown operating system."
+  $NVIM=0
+fi
+
+if [[ "$NVIM" -eq 1 ]]; then
+  bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
+fi
+
 cd $CWD
