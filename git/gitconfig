@@ -30,7 +30,7 @@
 [core]
     excludesfile = ~/.gitignore_global
     whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
-    editor = vim
+    editor = lvim
     fileMode = false
 [color]
     ui = true
@@ -58,3 +58,8 @@
     newHighlight = green bold 22
 [http]
     sslVerify = false
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
