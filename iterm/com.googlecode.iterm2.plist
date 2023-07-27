@@ -354,9 +354,13 @@
 	<false/>
 	<key>HapticFeedbackForEsc</key>
 	<false/>
+	<key>HideActivityIndicator</key>
+	<false/>
 	<key>HideScrollbar</key>
 	<true/>
 	<key>HideTab</key>
+	<false/>
+	<key>HideTabNumber</key>
 	<false/>
 	<key>HotkeyMigratedFromSingleToMulti</key>
 	<true/>
@@ -606,13 +610,15 @@
 				<real>0.21960784494876862</real>
 			</dict>
 			<key>Blend</key>
-			<real>0.050000000000000003</real>
+			<real>0.25033684329710143</real>
 			<key>Blink Allowed</key>
 			<false/>
 			<key>Blinking Cursor</key>
 			<true/>
 			<key>Blur</key>
 			<false/>
+			<key>Blur Radius</key>
+			<real>23.73322805851064</real>
 			<key>Bold Color</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -710,6 +716,8 @@
 			<real>1</real>
 			<key>Idle Code</key>
 			<integer>0</integer>
+			<key>Initial Use Transparency</key>
+			<false/>
 			<key>Jobs to Ignore</key>
 			<array>
 				<string>rlogin</string>
@@ -1025,6 +1033,8 @@
 			<true/>
 			<key>Normal Font</key>
 			<string>MesloLGMNFM-Regular 15</string>
+			<key>Only The Default BG Color Uses Transparency</key>
+			<false/>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -1150,6 +1160,8 @@
 	<integer>1</integer>
 	<key>TabStyleWithAutomaticOption</key>
 	<integer>5</integer>
+	<key>TabsHaveCloseButton</key>
+	<true/>
 	<key>UseBorder</key>
 	<true/>
 	<key>UseLionStyleFullscreen</key>

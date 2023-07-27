@@ -9,4 +9,5 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     # Brew paths
     export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
     export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
+    export PATH="/opt/homebrew/anaconda3/bin:$PATH"
 fi
