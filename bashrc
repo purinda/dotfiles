@@ -88,13 +88,16 @@ fi
 
 export PATH
 
+BASH_RCD=~/.bashrc.d
 # User specific aliases and functions
-if [ -d ~/.bashrc.d ]; then
-  for rc in ~/.bashrc.d/*; do
-    if [ -f "$rc" ]; then
-      source "$rc"
-    fi
-  done
+if [ -d $BASH_RCD ]; then
+  source "$BASH_RCD/flutter.sh"
+  source "$BASH_RCD/git.sh"
+  source "$BASH_RCD/iterm2.sh"
+  source "$BASH_RCD/ps.sh"
+  source "$BASH_RCD/os.sh"
+  source "$BASH_RCD/fn.sh"
+  source "$BASH_RCD/alias.sh"
 else
   echo "Minimal shell loaded"
   echo "Symlink 'bashrc.d' on your dotfiles to your home directory to source additional bash functionality."
