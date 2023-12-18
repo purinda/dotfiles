@@ -56,6 +56,7 @@ export PATH
 ZSH_RCD=~/.zshrc.d
 # User specific aliases and functions
 if [ -d $ZSH_RCD ]; then
+  source "$ZSH_RCD/gitstatus.plugin.zsh"
   source "$ZSH_RCD/gitstatus.prompt.zsh"
   source "$ZSH_RCD/iterm2.sh"
   source "$ZSH_RCD/os.sh"
