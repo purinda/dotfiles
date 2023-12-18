@@ -1,3 +1,4 @@
+# Function to parse Git branch
 function parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
@@ -8,17 +9,14 @@ function svndiff () {
 }
 
 # No Proxy
-function noproxy
-{
+function noproxy() {
     unset http_proxy HTTP_PROXY https_proxy HTTPS_PROXY
 }
 
-#
-# # ex - archive extractor
-# # usage: ex <file>
-ex ()
-{
-  if [ -f $1 ] ; then
+# Archive extractor
+# Usage: ex <file>
+ex() {
+  if [ -f $1 ]; then
     case $1 in
       *.tar.bz2)   tar xjf $1   ;;
       *.tar.gz)    tar xzf $1   ;;

@@ -1,20 +1,20 @@
-#!/usr/bin/env bash
-CWD=`pwd`
-SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+#!/usr/bin/env zsh
+CWD=$(pwd)
+SCRIPTPATH=$(cd -- "$(dirname "$0")" >/dev/null 2>&1; pwd -P)
 
-# Existing bashrc files before installation
-if [ -f ~/.bashrc ]; then
-    mv ~/.bashrc ~/.bashrc.orig
+# Existing zshrc files before installation
+if [ -f ~/.zshrc ]; then
+    mv ~/.zshrc ~/.zshrc.orig
 fi
 
-if [ -f ~/.bash_profile ]; then
-    mv ~/.bash_profile ~/.bash_profile.orig
-fi
+# Install gitstatus plugins
+git clone --depth=1 https://github.com/romkatv/gitstatus.git ~/.gitstatus
+ln -s ~/.gitstatus/gitstatus.prompt.zsh $SCRIPTPATH/zshrc.d/gitstatus.prompt.zsh
+ln -s ~/.gitstatus/gitstatus.plugin.zsh $SCRIPTPATH/zshrc.d/gitstatus.plugin.zsh
 
 # Create symlinks
-ln -sf $SCRIPTPATH/bash_profile ~/.bash_profile
-ln -sf $SCRIPTPATH/bashrc ~/.bashrc
-ln -sf $SCRIPTPATH/bashrc.d ~/.bashrc.d
+ln -sf $SCRIPTPATH/zshrc ~/.zshrc
+ln -sf $SCRIPTPATH/zshrc.d ~/.zshrc.d
 ln -sf $SCRIPTPATH/bin ~/bin
 ln -sf $SCRIPTPATH/git/gitconfig ~/.gitconfig
 ln -sf $SCRIPTPATH/git/gitignore_global ~/.gitignore
@@ -22,18 +22,18 @@ ln -sf $SCRIPTPATH/git/gitignore_global ~/.gitignore
 # Setup neovim and lvim
 NVIM=1
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-  echo "Linux detected. Installing nvim.."
-  sudo apt-get install neovim
+    echo "Linux detected. Installing nvim.."
+    sudo apt-get install neovim
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-  echo "macOS (OSX) detected. Installing nvim.."
-  brew install neovim
+    echo "macOS (OSX) detected. Installing nvim.."
+    brew install neovim
 else
-  echo "Unknown operating system."
-  $NVIM=0
+    echo "Unknown operating system."
+    NVIM=0
 fi
 
 if [[ "$NVIM" -eq 1 ]]; then
-  bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
+    bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
 fi
 
 cd $CWD
