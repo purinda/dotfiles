@@ -61,6 +61,7 @@ if [ -d $ZSH_RCD ]; then
   source "$ZSH_RCD/iterm2.sh"
   source "$ZSH_RCD/os.sh"
   source "$ZSH_RCD/fn.sh"
+  source "$ZSH_RCD/k8s.sh"
   source "$ZSH_RCD/alias.sh"
   source "$ZSH_RCD/ps.sh"
 else
