@@ -3,3 +3,4 @@ logs/*
 bin/node_modules/
 vim/bundle/
 vim/sessions/*
+zshrc.d/gitstatus.*
