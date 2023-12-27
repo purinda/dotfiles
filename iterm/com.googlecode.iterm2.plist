@@ -586,16 +586,16 @@
 				<key>Alpha Component</key>
 				<real>1</real>
 				<key>Blue Component</key>
-				<real>0.086274512112140656</real>
+				<real>0.10711669921875</real>
 				<key>Color Space</key>
 				<string>sRGB</string>
 				<key>Green Component</key>
-				<real>0.070588238537311554</real>
+				<real>0.04279263317584997</real>
 				<key>Red Component</key>
-				<real>0.062745101749897003</real>
+				<real>0.010630600154399872</real>
 			</dict>
-			<key>Background Image Location</key>
-			<string></string>
+			<key>Background Image Mode</key>
+			<integer>2</integer>
 			<key>Badge Color</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -610,7 +610,7 @@
 				<real>0.21960784494876862</real>
 			</dict>
 			<key>Blend</key>
-			<real>0.25033684329710143</real>
+			<real>0.050000000000000003</real>
 			<key>Blink Allowed</key>
 			<false/>
 			<key>Blinking Cursor</key>
@@ -618,7 +618,7 @@
 			<key>Blur</key>
 			<false/>
 			<key>Blur Radius</key>
-			<real>23.73322805851064</real>
+			<real>27.911087101063828</real>
 			<key>Bold Color</key>
 			<dict>
 				<key>Alpha Component</key>
@@ -712,6 +712,8 @@
 			</dict>
 			<key>Guid</key>
 			<string>12203EDF-42C6-4DF4-ACD3-74C609BF4C45</string>
+			<key>Hide After Opening</key>
+			<false/>
 			<key>Horizontal Spacing</key>
 			<real>1</real>
 			<key>Idle Code</key>
@@ -1022,7 +1024,7 @@
 				<real>0.34509804844856262</real>
 			</dict>
 			<key>Minimum Contrast</key>
-			<real>0.19619140625000001</real>
+			<real>0.25289062500000009</real>
 			<key>Mouse Reporting</key>
 			<true/>
 			<key>Name</key>
@@ -1032,7 +1034,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>MesloLGMNFM-Regular 15</string>
+			<string>Monaco 13</string>
 			<key>Only The Default BG Color Uses Transparency</key>
 			<false/>
 			<key>Option Key Sends</key>
@@ -1088,7 +1090,7 @@
 			<key>Terminal Type</key>
 			<string>xterm-256color</string>
 			<key>Thin Strokes</key>
-			<integer>3</integer>
+			<integer>0</integer>
 			<key>Transparency</key>
 			<real>0.0</real>
 			<key>Unlimited Scrollback</key>

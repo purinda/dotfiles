@@ -10,6 +10,7 @@ alias reboot='sudo reboot'
 # Commented to support docker shorthand aliases
 alias g='git'
 alias gs='git status'
+alias gsh='git show --diff-merges=on'
 alias ga='git add'
 alias gci='git commit'
 alias gc='git checkout'
