@@ -1,6 +1,9 @@
 # ~/.zshrc: executed by zsh(1) for non-login shells.
 # see /usr/share/doc/zsh/examples/startup-files/rc for examples
 
+autoload -Uz compinit
+compinit
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
