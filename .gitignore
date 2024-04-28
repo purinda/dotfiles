@@ -1,6 +1,6 @@
 vim/.netrwhist
 logs/*
-bin/node_modules/
+bin/*
 vim/bundle/
 vim/sessions/*
 zshrc.d/gitstatus.*

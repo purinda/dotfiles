@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # ~/.zshrc: executed by zsh(1) for non-login shells.
 # see /usr/share/doc/zsh/examples/startup-files/rc for examples
 
@@ -59,14 +66,11 @@ export PATH
 ZSH_RCD=~/.zshrc.d
 # User specific aliases and functions
 if [ -d $ZSH_RCD ]; then
-  source "$ZSH_RCD/gitstatus.plugin.zsh"
-  source "$ZSH_RCD/gitstatus.prompt.zsh"
   source "$ZSH_RCD/iterm2.sh"
   source "$ZSH_RCD/os.sh"
   source "$ZSH_RCD/fn.sh"
   source "$ZSH_RCD/k8s.sh"
   source "$ZSH_RCD/alias.sh"
-  source "$ZSH_RCD/ps.sh"
 else
   echo "Minimal shell loaded"
   echo "Symlink 'zshrc.d' on your dotfiles to your home directory to source additional zsh functionality."
