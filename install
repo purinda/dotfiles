@@ -27,8 +27,15 @@ else
     NVIM=0
 fi
 
-# Install powerlevel10k
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.powerlevel10k
+# Install powerlevel10k or git pull the latest version
+if [ -d ~/.powerlevel10k ]; then
+    cd ~/.powerlevel10k
+    git pull
+else
+    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.powerlevel10k
+fi
+
 echo 'source ~/.powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
 
+print "Installation complete. Please restart your terminal. Upon restart, you will be prompted to configure powerlevel10k."
 cd $CWD
