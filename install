@@ -18,6 +18,7 @@ ln -sf $SCRIPTPATH/bin ~/bin
 ln -sf $SCRIPTPATH/git/gitconfig ~/.gitconfig
 ln -sf $SCRIPTPATH/git/gitignore_global ~/.gitignore
 ln -sf $SCRIPTPATH/alacritty ~/.config/
+ln -sf $SCRIPTPATH/tmux ~/.config/
 
 # Setup neovim
 NVIM=1
