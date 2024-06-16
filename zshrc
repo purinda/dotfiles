@@ -27,6 +27,7 @@ setopt histappend
 # for setting history length see HISTSIZE and HISTFILESIZE in zshparam(1)
 HISTSIZE=10000
 HISTFILESIZE=20000
+bindkey '^R' history-incremental-search-backward
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
@@ -90,7 +91,6 @@ export EDITOR=`which lvim`
 export ANSIBLE_NOCOWS=1
 export AWS_PROFILE=saml
 source <(kubectl completion zsh)
-source ~/.powerlevel10k/powerlevel10k.zsh-theme
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
