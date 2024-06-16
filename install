@@ -7,12 +7,17 @@ if [ -f ~/.zshrc ]; then
     mv ~/.zshrc ~/.zshrc.orig
 fi
 
+if [ ! -d ~/.config ]; then
+    mkdir ~/.config
+fi
+
 # Create symlinks
 ln -sf $SCRIPTPATH/zshrc ~/.zshrc
 ln -sf $SCRIPTPATH/zshrc.d ~/.zshrc.d
 ln -sf $SCRIPTPATH/bin ~/bin
 ln -sf $SCRIPTPATH/git/gitconfig ~/.gitconfig
 ln -sf $SCRIPTPATH/git/gitignore_global ~/.gitignore
+ln -sf $SCRIPTPATH/alacritty ~/.config/
 
 # Setup neovim
 NVIM=1
