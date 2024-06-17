@@ -16,7 +16,7 @@ args = ["-l", "-c", "/opt/homebrew/bin/tmux attach || /opt/homebrew/bin/tmux new
 # Window settings
 [window]
 decorations = "Full"
-startup_mode = "Fullscreen"
+# startup_mode = "Fullscreen"
 dynamic_padding = true
 
 #[window.padding]
