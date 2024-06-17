@@ -400,6 +400,9 @@ bind C-a send-prefix
 # move status line to top
 set -g status-position bottom
 
+# border above status bar
+setw -g pane-border-format '─'
+setw -g pane-border-status bottom
 
 # -- tpm -----------------------------------------------------------------------
 

@@ -17,15 +17,16 @@ alias gc='git checkout'
 alias gl='git lg'
 alias gp='git push'
 alias gd='git diff'
-alias tree='tree -C'
+alias tree='eza --tree'
 alias sg='grep -HIrin --color=always'
-alias dmenv='setup_dockermachine $1'
 alias c='docker-compose'
 alias cup='docker-compose up -d'
 
-alias la='ls -A'
-alias l='ls -CF'
-
+alias la='eza -A'
+alias l='eza -l'
+alias ll='eza -lG'
+alias ls='eza'
+alias all='eza -AliG'
 unset use_color safe_term match_lhs sh
 
 alias cp="cp -i"                          # confirm before overwriting something
@@ -34,15 +35,7 @@ alias free='free -mh'                     # show sizes in MB
 alias more=less
 
 # Use htop instead of top if htop is installed
-if type htop &>/dev/null; then
-    alias top='htop'
+if type btop &>/dev/null; then
+    alias top='btop'
 fi
 
-# OS-specific aliases
-if [[ "$(uname)" == "Darwin" ]]; then
-    alias ll='ls -lhFG'
-    alias all='ls -AlhiFG'
-elif [[ "$(uname -s)" == "Linux" ]]; then
-    alias ll='ls -lhF --color=auto'
-    alias all='ls -AlhiF --color=auto'
-fi
