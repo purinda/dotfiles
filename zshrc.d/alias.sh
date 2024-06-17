@@ -27,6 +27,8 @@ alias l='eza -l'
 alias ll='eza -lG'
 alias ls='eza'
 alias all='eza -AliG'
+
+alias cat='bat --color=always --style=plain'
 unset use_color safe_term match_lhs sh
 
 alias cp="cp -i"                          # confirm before overwriting something
