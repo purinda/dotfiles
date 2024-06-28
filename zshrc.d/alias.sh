@@ -36,6 +36,11 @@ alias df='df -h'                          # human-readable sizes
 alias free='free -mh'                     # show sizes in MB
 alias more=less
 
+# tmux
+alias t="/opt/homebrew/bin/tmux attach || /opt/homebrew/bin/tmux new"
+alias ta="/opt/homebrew/bin/tmux attach"
+alias tn="/opt/homebrew/bin/tmux new"
+
 # Use htop instead of top if htop is installed
 if type btop &>/dev/null; then
     alias top='btop'
