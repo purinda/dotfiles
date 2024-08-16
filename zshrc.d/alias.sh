@@ -23,8 +23,8 @@ alias c='docker-compose'
 alias cup='docker-compose up -d'
 
 alias la='eza -A'
-alias l='eza -l'
-alias ll='eza -lG'
+alias ll='eza -l'
+alias l='eza -lG'
 alias ls='eza'
 alias all='eza -AliG'
 

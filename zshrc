@@ -59,7 +59,7 @@ fi
 # User specific environment
 if [[ ! "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
 then
-    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+    PATH="$HOME/.local/bin:$HOME/bin:$HOME/Library/Python/3.9/bin:$PATH"
 fi
 
 export PATH
@@ -72,6 +72,7 @@ if [ -d $ZSH_RCD ]; then
   source "$ZSH_RCD/fn.sh"
   source "$ZSH_RCD/k8s.sh"
   source "$ZSH_RCD/alias.sh"
+  source "$ZSH_RCD/python-venv.sh"
 else
   echo "Minimal shell loaded"
   echo "Symlink 'zshrc.d' on your dotfiles to your home directory to source additional zsh functionality."
