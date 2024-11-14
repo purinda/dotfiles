@@ -1,10 +1,16 @@
 venv-setup() {
     if [ -z "$1" ]; then
-        echo "Usage: venv-setup <path>"
+        echo "Usage: venv-setup <path> [python_version]"
         return 1
     fi
 
-    python3 -m venv "$1"
+    # If no Python version is specified, default to python3
+    python_version=${2:-python3}
+
+    # Create the virtual environment with the specified Python version
+    "$python_version" -m venv "$1"
+
+    # Activate the virtual environment
     source "$1/bin/activate"
 }
 
