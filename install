@@ -32,10 +32,11 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
     sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
     sudo apt update
     sudo apt install -y eza bat neovim
+    snap install ngrok
 
 elif [[ "$OSTYPE" == "darwin"* ]]; then
     echo "macOS (OSX) detected. Installing nvim.."
-    brew install neovim eza bat
+    brew install neovim eza bat ngrok
 else
     echo "Unknown operating system."
     NVIM=0

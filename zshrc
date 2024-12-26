@@ -67,12 +67,12 @@ export PATH
 ZSH_RCD=~/.zshrc.d
 # User specific aliases and functions
 if [ -d $ZSH_RCD ]; then
-  source "$ZSH_RCD/iterm2.sh"
   source "$ZSH_RCD/os.sh"
   source "$ZSH_RCD/fn.sh"
   source "$ZSH_RCD/k8s.sh"
   source "$ZSH_RCD/alias.sh"
   source "$ZSH_RCD/python-venv.sh"
+  source "$ZSH_RCD/completions.sh"
 else
   echo "Minimal shell loaded"
   echo "Symlink 'zshrc.d' on your dotfiles to your home directory to source additional zsh functionality."
@@ -96,3 +96,4 @@ source <(kubectl completion zsh)
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 source ~/.powerlevel10k/powerlevel10k.zsh-theme
+export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
