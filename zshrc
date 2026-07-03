@@ -97,3 +97,14 @@ source <(kubectl completion zsh)
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 source ~/.powerlevel10k/powerlevel10k.zsh-theme
 export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
+source ~/.powerlevel10k/powerlevel10k.zsh-theme
+
+# Added by Antigravity
+export PATH="/Users/purinda/.antigravity/antigravity/bin:$PATH"
+
+# Added by Antigravity IDE
+export PATH="/Users/purinda/.antigravity-ide/antigravity-ide/bin:$PATH"
+
+# Flutter
+export PATH="/Users/purinda/flutter/bin:$PATH"
+export PATH="/opt/homebrew/share/google-cloud-sdk/bin:$PATH"

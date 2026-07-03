@@ -22,6 +22,12 @@ alias sg='grep -HIrin --color=always'
 alias c='docker-compose'
 alias cup='docker-compose up -d'
 
+# Logs
+alias cl='c logs -f $1'
+clj() {
+  c logs --no-log-prefix -f "$1" | grep '^{' | jq -r '.message'
+}
+
 alias la='eza -A'
 alias ll='eza -l'
 alias l='eza -lG'
