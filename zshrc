@@ -73,6 +73,7 @@ if [ -d $ZSH_RCD ]; then
   source "$ZSH_RCD/alias.sh"
   source "$ZSH_RCD/python-venv.sh"
   source "$ZSH_RCD/completions.sh"
+  source "$ZSH_RCD/nerdstorm.sh"
 else
   echo "Minimal shell loaded"
   echo "Symlink 'zshrc.d' on your dotfiles to your home directory to source additional zsh functionality."
@@ -108,3 +109,10 @@ export PATH="/Users/purinda/.antigravity-ide/antigravity-ide/bin:$PATH"
 # Flutter
 export PATH="/Users/purinda/flutter/bin:$PATH"
 export PATH="/opt/homebrew/share/google-cloud-sdk/bin:$PATH"
+
+# >>> grok installer >>>
+export PATH="$HOME/.grok/bin:$PATH"
+fpath=(~/.grok/completions/zsh $fpath)
+autoload -Uz compinit && compinit -C
+# <<< grok installer <<<
+. ~/.rag.sh
