@@ -118,3 +118,6 @@ fpath=(~/.grok/completions/zsh $fpath)
 autoload -Uz compinit && compinit -C
 # <<< grok installer <<<
 
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/purinda/.lmstudio/bin"
+# End of LM Studio CLI section
