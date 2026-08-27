@@ -17,16 +17,19 @@ case $- in
       *) return;;
 esac
 
-# don't put duplicate lines or lines starting with space in the history.
-# See zshoptions(1) for more options
-HISTCONTROL=ignoredups
-
-# append to the history file, don't overwrite it
-setopt histappend
-
-# for setting history length see HISTSIZE and HISTFILESIZE in zshparam(1)
+# History file configuration
+HISTFILE="$HOME/.zsh_history"
 HISTSIZE=10000
-HISTFILESIZE=20000
+SAVEHIST=10000
+
+# History behavior options
+setopt APPEND_HISTORY          # Append history to file when shell exits
+setopt INC_APPEND_HISTORY      # Write to history file immediately upon command execution
+setopt SHARE_HISTORY           # Share command history across concurrent zsh sessions
+setopt HIST_IGNORE_DUPS        # Do not record duplicate consecutive commands
+setopt HIST_IGNORE_SPACE       # Do not record commands starting with a space
+setopt HIST_REDUCE_BLANKS      # Remove extra blank spaces from recorded commands
+
 bindkey '^R' history-incremental-search-backward
 
 # set a fancy prompt (non-color, unless we know we "want" color)
@@ -87,18 +90,16 @@ echo -ne "\033]0;`whoami`@`hostname`$@\007"
 export TERM="xterm-256color"
 
 # set lvim as the default editor so that commit messages will open it.
-export EDITOR=`which lvim`
+export EDITOR=`which nvim`
 
 # Linux mint cows bullshit
 export ANSIBLE_NOCOWS=1
 export AWS_PROFILE=saml
-source <(kubectl completion zsh)
+#source <(kubectl completion zsh)
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-source ~/.powerlevel10k/powerlevel10k.zsh-theme
 export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
-source ~/.powerlevel10k/powerlevel10k.zsh-theme
 
 # Added by Antigravity
 export PATH="/Users/purinda/.antigravity/antigravity/bin:$PATH"
@@ -109,6 +110,7 @@ export PATH="/Users/purinda/.antigravity-ide/antigravity-ide/bin:$PATH"
 # Flutter
 export PATH="/Users/purinda/flutter/bin:$PATH"
 export PATH="/opt/homebrew/share/google-cloud-sdk/bin:$PATH"
+source ~/.powerlevel10k/powerlevel10k.zsh-theme
 
 # >>> grok installer >>>
 export PATH="$HOME/.grok/bin:$PATH"

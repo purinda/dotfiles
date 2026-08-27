@@ -19,8 +19,8 @@ alias gp='git push'
 alias gd='git diff'
 alias tree='eza --tree'
 alias sg='grep -HIrin --color=always'
-alias c='docker-compose'
-alias cup='docker-compose up -d'
+alias c='podman-compose'
+alias cup='podman-compose up -d'
 
 # Logs
 alias cl='c logs -f $1'
@@ -51,5 +51,17 @@ alias tn="$TMUX_CMD new"
 # Use htop instead of top if htop is installed
 if type btop &>/dev/null; then
     alias top='btop'
+fi
+
+# Atomic Fedora ships podman, not docker
+if type podman &>/dev/null; then
+    alias docker='podman'
+    alias dps='podman ps'
+    alias dpsa='podman ps -a'
+    alias di='podman images'
+    alias dex='podman exec -it'
+fi
+if type podman-compose &>/dev/null; then
+    alias docker-compose='podman-compose'
 fi
 
