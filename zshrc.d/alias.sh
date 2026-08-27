@@ -19,8 +19,43 @@ alias gp='git push'
 alias gd='git diff'
 alias tree='eza --tree'
 alias sg='grep -HIrin --color=always'
-alias c='podman-compose'
-alias cup='podman-compose up -d'
+# Container runtime & Compose detection (Docker takes precedence over Podman)
+if type docker &>/dev/null; then
+    alias dps='docker ps'
+    alias dpsa='docker ps -a'
+    alias di='docker images'
+    alias dex='docker exec -it'
+
+    if docker compose version &>/dev/null 2>&1; then
+        alias c='docker compose'
+        alias cup='docker compose up -d'
+        if ! type docker-compose &>/dev/null; then
+            alias docker-compose='docker compose'
+        fi
+    elif type docker-compose &>/dev/null; then
+        alias c='docker-compose'
+        alias cup='docker-compose up -d'
+    fi
+elif type podman &>/dev/null; then
+    alias docker='podman'
+    alias dps='podman ps'
+    alias dpsa='podman ps -a'
+    alias di='podman images'
+    alias dex='podman exec -it'
+
+    if type podman-compose &>/dev/null; then
+        alias docker-compose='podman-compose'
+        alias c='podman-compose'
+        alias cup='podman-compose up -d'
+    elif podman compose version &>/dev/null 2>&1; then
+        alias docker-compose='podman compose'
+        alias c='podman compose'
+        alias cup='podman compose up -d'
+    fi
+else
+    alias c='docker-compose'
+    alias cup='docker-compose up -d'
+fi
 
 # Logs
 alias cl='c logs -f $1'
@@ -51,17 +86,5 @@ alias tn="$TMUX_CMD new"
 # Use htop instead of top if htop is installed
 if type btop &>/dev/null; then
     alias top='btop'
-fi
-
-# Atomic Fedora ships podman, not docker
-if type podman &>/dev/null; then
-    alias docker='podman'
-    alias dps='podman ps'
-    alias dpsa='podman ps -a'
-    alias di='podman images'
-    alias dex='podman exec -it'
-fi
-if type podman-compose &>/dev/null; then
-    alias docker-compose='podman-compose'
 fi
 
