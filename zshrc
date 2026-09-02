@@ -77,6 +77,7 @@ if [ -d $ZSH_RCD ]; then
   source "$ZSH_RCD/python-venv.sh"
   source "$ZSH_RCD/completions.sh"
   source "$ZSH_RCD/nerdstorm.sh"
+  source "$ZSH_RCD/ai.sh"
 else
   echo "Minimal shell loaded"
   echo "Symlink 'zshrc.d' on your dotfiles to your home directory to source additional zsh functionality."
