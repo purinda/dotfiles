@@ -1,56 +1,223 @@
-#!/usr/bin/env zsh
-CWD=$(pwd)
-SCRIPTPATH=$(cd -- "$(dirname "$0")" >/dev/null 2>&1; pwd -P)
+#!/usr/bin/env bash
+set -euo pipefail
 
-# Existing zshrc files before installation
-if [ -f ~/.zshrc ]; then
-    mv ~/.zshrc ~/.zshrc.orig
-fi
+# Bash is available before Zsh has been installed on all supported platforms.
+REPO_DIR=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd -P)
+DRY_RUN=0
+SKIP_PACKAGES=0
+WITH_NGROK=0
+BACKUP_DIR=""
+NERD_FONTS_VERSION=${NERD_FONTS_VERSION:-v3.5.1}
 
-if [ ! -d ~/.config ]; then
-    mkdir ~/.config
-fi
+usage() {
+    printf 'Usage: ./install [--dry-run] [--skip-packages] [--with-ngrok]\n'
+}
 
-# Create symlinks
-ln -sf $SCRIPTPATH/zshrc ~/.zshrc
-ln -sf $SCRIPTPATH/zshrc.d ~/.zshrc.d
-ln -sf $SCRIPTPATH/bin ~/bin
-ln -sf $SCRIPTPATH/git/gitconfig ~/.gitconfig
-ln -sf $SCRIPTPATH/git/gitignore_global ~/.gitignore
-ln -sf $SCRIPTPATH/alacritty ~/.config/
-ln -sf $SCRIPTPATH/tmux ~/.config/
+run() {
+    if (( DRY_RUN )); then
+        printf 'Would run:'; printf ' %q' "$@"; printf '\n'
+    else
+        "$@"
+    fi
+}
 
-# Setup neovim, eza and other CLI tools
-NVIM=1
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-    echo "Linux detected. Installing nvim and CLI tools.."
+linux_platform() {
+    local release_file=${1:-/etc/os-release} ID='' ID_LIKE='' NAME=''
+    [[ -r "$release_file" ]] || return 1
+    # os-release is a shell-compatible file provided by the operating system.
+    source "$release_file"
+    case "$ID:$NAME" in
+        *bluefin*|*Bluefin*) printf 'bluefin\n' ;;
+        ubuntu:*|debian:*) printf 'ubuntu\n' ;;
+        *)
+            case " $ID_LIKE " in
+                *' ubuntu '*|*' debian '*) printf 'ubuntu\n' ;;
+                *) return 1 ;;
+            esac
+            ;;
+    esac
+}
 
-    # eza
-    sudo mkdir -p /etc/apt/keyrings
-    wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
-    echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list
-    sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
-    sudo apt update
-    sudo apt install -y eza bat neovim
-    snap install ngrok
+find_brew() {
+    if command -v brew >/dev/null 2>&1; then
+        command -v brew
+    else
+        local candidate
+        for candidate in /home/linuxbrew/.linuxbrew/bin/brew /opt/homebrew/bin/brew /usr/local/bin/brew; do
+            if [[ -x "$candidate" ]]; then printf '%s\n' "$candidate"; return; fi
+        done
+        return 1
+    fi
+}
 
-elif [[ "$OSTYPE" == "darwin"* ]]; then
-    echo "macOS (OSX) detected. Installing nvim.."
-    brew install neovim eza bat ngrok
-else
-    echo "Unknown operating system."
-    NVIM=0
-fi
+install_packages() {
+    local brew_bin
+    case "$PLATFORM" in
+        bluefin|macos)
+            brew_bin=$(find_brew) || {
+                printf 'Homebrew is required. Install it from https://brew.sh, then rerun ./install.\n' >&2
+                return 1
+            }
+            eval "$("$brew_bin" shellenv)"
+            run "$brew_bin" install zsh neovim eza bat btop tmux jq git-lfs
+            if (( WITH_NGROK )); then
+                if [[ "$PLATFORM" == macos ]]; then
+                    run "$brew_bin" install --cask ngrok
+                else
+                    printf 'ngrok is optional; install its Linux binary from https://ngrok.com/download.\n'
+                fi
+            fi
+            ;;
+        ubuntu)
+            run sudo apt-get update
+            run sudo apt-get install -y zsh git curl unzip fontconfig gnupg ca-certificates neovim bat btop tmux jq git-lfs
+            if (( DRY_RUN )) || apt-cache policy eza | grep -Eq 'Candidate: [0-9]'; then
+                run sudo apt-get install -y eza
+            else
+                # Older Ubuntu releases need eza's upstream apt repository.
+                run sudo install -d -m 755 /etc/apt/keyrings
+                curl -fsSL https://raw.githubusercontent.com/eza-community/eza/main/deb.asc \
+                    | gpg --dearmor | sudo tee /etc/apt/keyrings/gierens.gpg >/dev/null
+                printf 'deb [signed-by=/etc/apt/keyrings/gierens.gpg] https://deb.gierens.de stable main\n' \
+                    | sudo tee /etc/apt/sources.list.d/gierens.list >/dev/null
+                run sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
+                run sudo apt-get update
+                run sudo apt-get install -y eza
+            fi
+            if (( WITH_NGROK )); then
+                run sudo snap install ngrok
+            fi
+            ;;
+    esac
+}
 
-# Install powerlevel10k or git pull the latest version
-if [ -d ~/.powerlevel10k ]; then
-    cd ~/.powerlevel10k
-    git pull
-else
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ~/.powerlevel10k
-fi
+backup_existing() {
+    local destination=$1
+    [[ -e "$destination" || -L "$destination" ]] || return 0
+    if (( DRY_RUN )); then
+        printf 'Would back up %s\n' "$destination"
+        return
+    fi
+    if [[ -z "$BACKUP_DIR" ]]; then
+        BACKUP_DIR=$(mktemp -d "$HOME/.dotfiles-backup-$(date +%Y%m%d-%H%M%S)-XXXXXX")
+        printf 'Existing configuration backup: %s\n' "$BACKUP_DIR"
+    fi
+    local relative=${destination#"$HOME"/}
+    mkdir -p "$BACKUP_DIR/$(dirname -- "$relative")"
+    mv -- "$destination" "$BACKUP_DIR/$relative"
+}
 
-echo 'source ~/.powerlevel10k/powerlevel10k.zsh-theme' >> ~/.zshrc
+link_file() {
+    local source=$1 destination=$2
+    if [[ -L "$destination" && "$(readlink "$destination")" == "$source" ]]; then return; fi
+    backup_existing "$destination"
+    run mkdir -p "$(dirname -- "$destination")"
+    run ln -s "$source" "$destination"
+}
 
-print "Installation complete. Please restart your terminal. Upon restart, you will be prompted to configure powerlevel10k."
-cd $CWD
+write_config() {
+    local destination=$1 content=$2
+    if [[ -f "$destination" && ! -L "$destination" && "$(cat "$destination")" == "$content" ]]; then return; fi
+    backup_existing "$destination"
+    run mkdir -p "$(dirname -- "$destination")"
+    if (( DRY_RUN )); then printf 'Would write %s\n' "$destination"; else printf '%s\n' "$content" > "$destination"; fi
+}
+
+install_prompt() {
+    if [[ -d "$HOME/.powerlevel10k/.git" ]]; then
+        run git -C "$HOME/.powerlevel10k" pull --ff-only
+    elif [[ -e "$HOME/.powerlevel10k" ]]; then
+        printf '%s exists but is not a Git checkout; leaving it in place.\n' "$HOME/.powerlevel10k" >&2
+        [[ -f "$HOME/.powerlevel10k/powerlevel10k.zsh-theme" ]] || return 1
+    else
+        run git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "$HOME/.powerlevel10k"
+    fi
+}
+
+install_fonts() (
+    local font_dir temp_dir
+    if [[ "$PLATFORM" == macos ]]; then font_dir="$HOME/Library/Fonts/MesloNerdFont";
+    else font_dir="$HOME/.local/share/fonts/MesloNerdFont"; fi
+    if [[ ! -f "$font_dir/.version" || "$(cat "$font_dir/.version")" != "$NERD_FONTS_VERSION" ]]; then
+        if (( DRY_RUN )); then
+            printf 'Would install Meslo Nerd Font %s in %s\n' "$NERD_FONTS_VERSION" "$font_dir"
+        else
+            temp_dir=$(mktemp -d)
+            # Clean up downloads on errors as well as on success.
+            trap 'rm -rf -- "$temp_dir"' EXIT
+            curl -fL --retry 3 "https://github.com/ryanoasis/nerd-fonts/releases/download/$NERD_FONTS_VERSION/Meslo.zip" -o "$temp_dir/Meslo.zip"
+            mkdir -p "$font_dir"
+            unzip -oq "$temp_dir/Meslo.zip" 'MesloLGSNerdFont-*.ttf' 'MesloLGSNerdFontMono-*.ttf' -d "$font_dir"
+            printf '%s\n' "$NERD_FONTS_VERSION" > "$font_dir/.version"
+            rm -rf -- "$temp_dir"
+            trap - EXIT
+        fi
+    fi
+    if [[ "$PLATFORM" != macos ]]; then run fc-cache -f "$font_dir"; fi
+)
+
+install_configs() {
+    local zsh_bin theme
+    if (( DRY_RUN )); then zsh_bin='(installed Zsh path)'; else zsh_bin=$(command -v zsh); fi
+    link_file "$REPO_DIR/zshrc" "$HOME/.zshrc"
+    link_file "$REPO_DIR/zshrc.d" "$HOME/.zshrc.d"
+    link_file "$REPO_DIR/git/gitconfig" "$HOME/.gitconfig"
+    link_file "$REPO_DIR/git/gitignore_global" "$HOME/.gitignore"
+    link_file "$REPO_DIR/git/gitignore_global" "$HOME/.gitignore_global"
+    link_file "$REPO_DIR/tmux" "$HOME/.config/tmux"
+    # Never create the old dangling ~/bin symlink when the repo has no bin/.
+    if [[ -d "$REPO_DIR/bin" ]]; then link_file "$REPO_DIR/bin" "$HOME/bin"; fi
+    if [[ -L "$HOME/.config/alacritty" ]]; then
+        backup_existing "$HOME/.config/alacritty"
+    fi
+    write_config "$HOME/.config/alacritty/alacritty.toml" "[general]
+import = [\"$REPO_DIR/alacritty/alacritty.toml\"]
+[env]
+SHELL = \"$zsh_bin\"
+[terminal.shell]
+program = \"$zsh_bin\"
+args = [\"-l\"]"
+    for theme in "$REPO_DIR"/alacritty/*.toml; do
+        [[ "$theme" == "$REPO_DIR/alacritty/alacritty.toml" ]] && continue
+        link_file "$theme" "$HOME/.config/alacritty/$(basename -- "$theme")"
+    done
+}
+
+main() {
+    while (( $# )); do
+        case "$1" in
+            --dry-run) DRY_RUN=1 ;;
+            --skip-packages) SKIP_PACKAGES=1 ;;
+            --with-ngrok) WITH_NGROK=1 ;;
+            -h|--help) usage; return ;;
+            *) usage >&2; return 1 ;;
+        esac
+        shift
+    done
+    case "$(uname -s)" in
+        Darwin) PLATFORM=macos ;;
+        Linux) PLATFORM=$(linux_platform) || { printf 'Supported Linux systems: Bluefin and Ubuntu/Debian.\n' >&2; return 1; } ;;
+        *) printf 'Supported systems: Bluefin, Ubuntu/Debian, and macOS.\n' >&2; return 1 ;;
+    esac
+    printf 'Setting up dotfiles for %s\n' "$PLATFORM"
+    if (( ! SKIP_PACKAGES )); then
+        install_packages
+    elif [[ "$PLATFORM" == bluefin || "$PLATFORM" == macos ]]; then
+        local brew_bin
+        if brew_bin=$(find_brew); then eval "$("$brew_bin" shellenv)"; fi
+    fi
+    if (( ! DRY_RUN )); then
+        local tool
+        for tool in zsh git curl unzip; do
+            command -v "$tool" >/dev/null || { printf 'Missing dependency: %s\n' "$tool" >&2; return 1; }
+        done
+        if [[ "$PLATFORM" != macos ]]; then command -v fc-cache >/dev/null; fi
+    fi
+    install_prompt
+    install_fonts
+    install_configs
+    printf 'Done. Start Zsh with: exec zsh\nThen run p10k configure and select MesloLGS Nerd Font Mono in your terminal settings.\n'
+}
+
+# Sourcing exposes helpers for tests without performing an installation.
+if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then main "$@"; fi

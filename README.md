@@ -72,35 +72,68 @@ This repository manages configuration files for **Zsh**, **Alacritty**, **Tmux**
 
 ## Installation
 
-To set up the dotfiles on a new machine:
+Works on **Bluefin** (including Dakota), **Ubuntu/Debian**, and **macOS**.
+The installer uses Bash, so Zsh does not need to be installed beforehand.
+Clone anywhere; paths are resolved from the installer, not the current directory:
 
-1. Clone the repository to `~/.dotfiles`:
-   ```bash
-   git clone git@github.com:purinda/dotfiles.git ~/.dotfiles
-   cd ~/.dotfiles
-   ```
+```bash
+mkdir -p ~/src
+git clone https://github.com/purinda/dotfiles.git ~/src/dotfiles
+cd ~/src/dotfiles
+./install
+```
 
-2. Run the installer:
-   ```bash
-   ./install
-   ```
+| Platform | Package manager | Prerequisites |
+| --- | --- | --- |
+| Bluefin / Bluefin Dakota | Homebrew | Bluefin's included Homebrew; no changes to the immutable system image |
+| Ubuntu / Debian | apt | sudo access for packages; upstream eza repository added only on older releases without eza |
+| macOS | Homebrew | Install Homebrew from https://brew.sh first |
 
-### What the installer does:
-- Backs up any existing `~/.zshrc` to `~/.zshrc.orig`.
-- Creates symlinks:
-  - `~/.zshrc` &rarr; `.dotfiles/zshrc`
-  - `~/.zshrc.d` &rarr; `.dotfiles/zshrc.d`
-  - `~/.gitconfig` &rarr; `.dotfiles/git/gitconfig`
-  - `~/.gitignore` &rarr; `.dotfiles/git/gitignore_global`
-  - `~/.config/alacritty` &rarr; `.dotfiles/alacritty`
-  - `~/.config/tmux` &rarr; `.dotfiles/tmux`
-- Installs dependencies:
-  - **Linux (Debian/Ubuntu)**: Installs `eza`, `bat`, `neovim`, and `ngrok`.
-  - **macOS**: Installs `neovim`, `eza`, `bat`, and `ngrok` via Homebrew.
-- Clones/updates [Powerlevel10k](https://github.com/romkatv/powerlevel10k) in `~/.powerlevel10k`.
+The installer installs Zsh, Neovim, eza, bat, btop, tmux, jq, and Git LFS;
+clones or updates Powerlevel10k with a fast-forward-only pull; and installs the
+Regular, Bold, Italic, and Bold Italic variants of **MesloLGS Nerd Font** and
+**MesloLGS Nerd Font Mono**. Meslo is pinned to Nerd Fonts v3.5.1; override with
+`NERD_FONTS_VERSION=vX.Y.Z ./install` to select another release.
 
-3. Restart your terminal session or run:
-   ```bash
-   source ~/.zshrc
-   ```
-   If configuring Powerlevel10k for the first time, run `p10k configure`.
+Existing files, directories, and conflicting symlinks are moved into a unique
+`~/.dotfiles-backup-<timestamp>-<random>/` directory before replacement.
+Rerunning keeps matching links and generated configuration in place, skips
+already installed font releases, and never appends duplicate prompt lines or
+modifies files in this repository.
+
+Installed configuration:
+
+- `~/.zshrc` and `~/.zshrc.d` link to this repository.
+- `~/.gitconfig` links to `git/gitconfig`; HTTPS certificate verification stays enabled.
+- `~/.gitignore` and `~/.gitignore_global` link to `git/gitignore_global`.
+- `~/.config/tmux` links to `tmux`.
+- `~/.config/alacritty/alacritty.toml` imports the repository configuration and
+  sets the installed Zsh executable, including Homebrew's path on Bluefin.
+  Theme files are linked individually.
+- `~/bin` is linked only when this repository contains a `bin/` directory.
+
+Useful options:
+
+```bash
+./install --dry-run        # Preview without installing packages or changing files
+./install --skip-packages  # Configure using dependencies already installed
+./install --with-ngrok     # Optional ngrok: Homebrew cask on macOS, snap on Ubuntu
+```
+
+On Bluefin, `--with-ngrok` prints the Linux download link instead of attempting
+an unsupported Homebrew cask. Docker installation is separate; the shell aliases
+prefer an existing Docker installation and fall back to Podman. User-local
+binaries stay on PATH, including rootless Docker.
+
+Start the configured shell with `exec zsh`, then run `p10k configure`.
+Select **MesloLGS Nerd Font Mono** in your terminal preferences. Alacritty already
+selects Meslo in the imported configuration. The installer does not change your
+account's login shell or terminal preferences. To make Zsh the login shell, use
+`chsh -s "$(command -v zsh)"` where the shell is listed in `/etc/shells`; Homebrew
+shells may need administrator setup on Bluefin or macOS.
+
+Run the installer regression checks with:
+
+```bash
+bash tests/install.sh
+```

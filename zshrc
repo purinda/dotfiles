@@ -8,6 +8,9 @@ fi
 # ~/.zshrc: executed by zsh(1) for non-login shells.
 # see /usr/share/doc/zsh/examples/startup-files/rc for examples
 
+ZSH_RCD="$HOME/.zshrc.d"
+[[ ! -f "$ZSH_RCD/os.sh" ]] || source "$ZSH_RCD/os.sh"
+
 autoload -Uz compinit
 compinit
 
@@ -59,18 +62,9 @@ if [ -f /etc/zshrc ]; then
     source /etc/zshrc
 fi
 
-# User specific environment
-if [[ ! "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
-then
-    PATH="$HOME/.local/bin:$HOME/bin:$HOME/Library/Python/3.9/bin:$PATH"
-fi
-
-export PATH
-
 ZSH_RCD=~/.zshrc.d
 # User specific aliases and functions
 if [ -d $ZSH_RCD ]; then
-  source "$ZSH_RCD/os.sh"
   source "$ZSH_RCD/fn.sh"
   source "$ZSH_RCD/k8s.sh"
   source "$ZSH_RCD/alias.sh"
@@ -98,27 +92,14 @@ export ANSIBLE_NOCOWS=1
 export AWS_PROFILE=saml
 #source <(kubectl completion zsh)
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+# Load the theme once; the installer never appends to this file.
+if [[ -r "$HOME/.powerlevel10k/powerlevel10k.zsh-theme" ]]; then
+  source "$HOME/.powerlevel10k/powerlevel10k.zsh-theme"
+fi
+# To customize the prompt, run `p10k configure`.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
 
-# Added by Antigravity
-export PATH="/Users/purinda/.antigravity/antigravity/bin:$PATH"
-
-# Added by Antigravity IDE
-export PATH="/Users/purinda/.antigravity-ide/antigravity-ide/bin:$PATH"
-
-# Flutter
-export PATH="/Users/purinda/flutter/bin:$PATH"
-export PATH="/opt/homebrew/share/google-cloud-sdk/bin:$PATH"
-source ~/.powerlevel10k/powerlevel10k.zsh-theme
-
-# >>> grok installer >>>
-export PATH="$HOME/.grok/bin:$PATH"
-fpath=(~/.grok/completions/zsh $fpath)
-autoload -Uz compinit && compinit -C
-# <<< grok installer <<<
-
-# Added by LM Studio CLI (lms)
-export PATH="$PATH:/Users/purinda/.lmstudio/bin"
-# End of LM Studio CLI section
+if [[ -d "$HOME/.grok/completions/zsh" ]]; then
+  fpath=("$HOME/.grok/completions/zsh" $fpath)
+  compinit -C
+fi
